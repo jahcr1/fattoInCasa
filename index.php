@@ -140,6 +140,18 @@
               </div>
             </div>
           </div>
+          <!-- Slide 4 o los que hagan falta -->
+          <div class="swiper-slide">
+            <div class="card text-white border-0 position-relative overflow-hidden">
+              <div class="slide-img-container">
+                <img src="./imagenes/sliders/evento1.jpg" class="img-slide" alt="Evento 2">
+              </div>
+              <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
+                <h5 class="card-title">“El mejor catering que hemos contratado2”</h5>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
