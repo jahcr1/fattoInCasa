@@ -1,0 +1,77 @@
+/* styles.css */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+/* Asegura que el contenedor tenga altura */
+.swiper {
+  width: 100%;
+  height: 300px; /* o el alto que desees */
+  position: relative;
+}
+
+.swiper-wrapper {
+  height: 100%;
+}
+
+.swiper-slide {
+  height: 300px; /* o más, ajustalo a gusto */
+  position: relative;
+}
+
+
+/* Hace que la imagen escale correctamente y se recorte como fondo */
+.slide-img-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.img-slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ← escalar sin deformar */
+  transition: transform 0.5s ease;
+}
+
+/* Efecto sutil de zoom al pasar el mouse */
+.card:hover .img-slide {
+  transform: scale(1.05);
+}
+
+/* Fondo oscuro degradado más estético */
+.bg-gradient-dark {
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  z-index: 1;
+}
+
+/* Aseguramos que el texto esté por encima */
+.card-img-overlay h5 {
+  z-index: 2;
+  font-weight: 600;
+  background-color: rgba(0,0,0,0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+}
+
+/* Corregir la posición de la paginación Swiper */
+.swiper-pagination {
+  position: relative !important; /* ← evita que se superponga */
+  margin-top: 1rem;
+  z-index: 2;
+}
+
+/* Aseguramos que las imágenes se vean debajo del texto */
+.swiper-slide .card {
+  height: 100%;
+}
