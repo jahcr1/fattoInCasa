@@ -5,6 +5,102 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Navbar personalizado */
+/* Estilo de enlaces */
+.custom-link {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  white-space: nowrap;
+  position: relative;
+  background-color: transparent;
+}
+
+/* Hover animado moderno */
+.custom-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffc107;
+  transform: scale(1.05);
+}
+
+/* Línea divisoria sutil entre enlaces (solo en desktop) */
+.custom-link:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Imagen del logo más grande y visible */
+.logo-img {
+  height: 48px; /* Aumentado */
+  width: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.branding-container {
+  flex-direction: row;
+}
+
+/* Efecto al pasar el mouse sobre el bloque de marca */
+.branding-container:hover .logo-img {
+  transform: scale(1.05);
+}
+
+/* Espaciado para el texto del nombre */
+.brand-name {
+  white-space: nowrap;
+}
+
+/* Branding container */
+.branding-container {
+  gap: 0.5rem;
+}
+
+/* Contenedor de links flexible */
+.nav-links {
+  flex: 1 1 auto;
+  min-width: 250px;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Fade animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-right {
+  animation: fadeInRight 1s ease;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
 .card-title {
   font-weight: 600;
 }
@@ -74,4 +170,44 @@ body {
 /* Aseguramos que las imágenes se vean debajo del texto */
 .swiper-slide .card {
   height: 100%;
+}
+
+/* Responsive: en mobile los links van en columna */
+/* Responsive refinado */
+@media (max-width: 768px) {
+  .nav-links {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .custom-link {
+    flex: 1 1 auto;
+    text-align: center;
+    min-width: 120px;
+    margin-bottom: 0.5rem;
+  }
+
+  .custom-link:not(:last-child)::after {
+    display: none;
+  }
+
+  .branding-container {
+    flex-direction: row;
+    align-items: center;
+    text-align: right;
+    justify-content: space-between;
+    gap: 0.2rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .logo-img {
+    height: 42px;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
 }

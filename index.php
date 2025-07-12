@@ -30,6 +30,26 @@
 </head>
 
 <body>
+  <!-- NAVBAR PERSONALIZADO -->
+  <nav class="navbar navbar-dark bg-dark py-3">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      
+      <!-- Bloque de enlaces -->
+      <div class="d-flex flex-wrap gap-3 nav-links">
+        <a href="#section-hero" class="custom-link">Inicio</a>
+        <a href="#section-menu" class="custom-link">Menúes</a>
+        <a href="#section-services" class="custom-link">Nuestros servicios</a>
+        <a href="#section-contact" class="custom-link">Contáctanos</a>
+      </div>
+
+      <!-- Bloque de logo + nombre -->
+      <div class="branding-container d-flex align-items-center mt-3 mt-md-0 fade-in-right">
+        <span class="brand-name text-white fw-bold fs-5 me-3">Fatto In Casa</span>
+        <img src="./imagenes/logo/logo1.png" alt="Logo" class="logo-img">
+      </div>
+
+    </div>
+  </nav>
 
   <!-- SECCIÓN HERO INFORMATIVA -->
   <section class="py-5 bg-light" id="section-hero">
@@ -39,7 +59,7 @@
         <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
           <h2 class="fw-bold">Bienvenido a Fatto In Casa</h2>
           <p class="text-muted">Ofrecemos un servicio de catering casero, fresco y de calidad, pensado para todo tipo de eventos: sociales, corporativos o familiares.</p>
-          <a href="#section-slider" class="btn btn-primary mt-3">Ver nuestro trabajo</a>
+          <a href="#section-slider" class="btn btn-primary mt-3">Contactáte con Nosotros</a>
         </div>
         <!-- Imagen -->
         <div class="col-md-6 text-center" data-aos="fade-left">
