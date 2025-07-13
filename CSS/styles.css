@@ -5,7 +5,10 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Navbar personalizado */
+/****************************************************/
+/************   NAVBAR PERSONALIZADO  ***************/
+/****************************************************/
+
 /* Estilo de enlaces */
 .custom-link {
   color: white;
@@ -100,10 +103,52 @@ body {
   }
 }
 
+/**************************************************/
+/************   SECCION MENUES  *******************/
+/**************************************************/
+
+.bg-light-gray {
+  background-color: rgb(33, 37, 41);
+  opacity: 1;
+}
+
+/**************************************************/
+/*********   SECCION NUESTROS SERVICIOS  **********/
+/**************************************************/
+
+/* Imagen de fondo en accordion */
+.bg-img-catering {
+  background: url('../imagenes/servicios/familiar1.jpg') center/cover no-repeat;
+  padding: 1.5rem;
+  border-radius: 0rem;
+  backdrop-filter: brightness(0.6);
+}
+
+.bg-img-eventos2 {
+  background: url('../imagenes/servicios/personalizado1.jpg') center/cover no-repeat;
+  padding: 1.5rem;
+  border-radius: 0rem;
+  backdrop-filter: brightness(0.6);
+}
+
+.bg-img-eventos3 {
+  background: url('../imagenes/servicios/empresarial1.jpg') center/cover no-repeat;
+  padding: 1.5rem;
+  border-radius: 0rem;
+  backdrop-filter: brightness(0.6);
+}
+
+/**************************************************/
+/*********        3 TARJETAS             **********/
+/**************************************************/
 
 .card-title {
   font-weight: 600;
 }
+
+/******************************************************/
+/*********   SECCION SLIDER SWIPER CLIENTES  **********/
+/******************************************************/
 
 /* Asegura que el contenedor tenga altura */
 .swiper {
@@ -172,8 +217,55 @@ body {
   height: 100%;
 }
 
+
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/************   PANEL.PHP  ************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+
+body#body-panel {
+  background-color: rgb(91, 98, 105);
+  color: white;
+}
+
+.sidebar {
+  background-color: #1f1f1f;
+  min-height: 100vh;
+  padding-top: 2rem;
+}
+
+.sidebar a {
+  color: #ffc107;
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 1.2rem;
+}
+
+.sidebar a:hover, .sidebar .active {
+      background-color: #343434;
+}
+
+.titulo-seccion {
+      font-weight: bold;
+      border-left: 4px solid #ffc107;
+      padding-left: 10px;
+      color: #ffc107;
+      margin-bottom: 1.5rem;
+}
+
+
+
+/**************************************************/
+/**************************************************/
+/***********      MEDIA QUERIES         ***********/
+/**************************************************/
+/**************************************************/
+
 /* Responsive: en mobile los links van en columna */
-/* Responsive refinado */
+
 @media (max-width: 768px) {
   .nav-links {
     justify-content: center;
@@ -183,7 +275,7 @@ body {
   .custom-link {
     flex: 1 1 auto;
     text-align: center;
-    min-width: 120px;
+    min-width: 180px;
     margin-bottom: 0.5rem;
   }
 
@@ -209,5 +301,19 @@ body {
   .brand-name {
     font-size: 1rem;
   }
+
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #1f1f1f;
+    min-width: 100vw;
+    min-height: auto !important;
+    max-height: 250px;
+    padding: 1rem;
+    justify-content: space-evenly;
+  }
+
+  
 
 }
