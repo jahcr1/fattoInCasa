@@ -1,3 +1,7 @@
+<?php
+session_start();
+include './componentes/conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,13 +37,13 @@
   <!-- NAVBAR PERSONALIZADO -->
   <nav class="navbar navbar-dark bg-dark py-3">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
-      
+
       <!-- Bloque de enlaces -->
       <div class="d-flex flex-wrap gap-3 nav-links">
         <a href="#section-hero" class="custom-link">Inicio</a>
         <a href="#section-menu" class="custom-link">Menúes</a>
         <a href="#section-services" class="custom-link">Nuestros servicios</a>
-        <a href="#section-contact" class="custom-link">Contáctanos</a>
+        <a href="#section-services" class="custom-link">Contáctanos</a>
       </div>
 
       <!-- Bloque de logo + nombre -->
@@ -51,7 +55,7 @@
     </div>
   </nav>
 
-  <!-- SECCIÓN HERO INFORMATIVA -->
+  <!-- SECCIÓN INFO HERO INFORMATIVA -->
   <section class="py-5 bg-light" id="section-hero">
     <div class="container">
       <div class="row align-items-center">
@@ -59,11 +63,128 @@
         <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
           <h2 class="fw-bold">Bienvenido a Fatto In Casa</h2>
           <p class="text-muted">Ofrecemos un servicio de catering casero, fresco y de calidad, pensado para todo tipo de eventos: sociales, corporativos o familiares.</p>
-          <a href="#section-slider" class="btn btn-primary mt-3">Contactáte con Nosotros</a>
+          <a href="#section-slider" class="btn btn-warning mt-3">Contactáte con Nosotros</a>
         </div>
         <!-- Imagen -->
         <div class="col-md-6 text-center" data-aos="fade-left">
           <img src="./imagenes/tarjetas/tarjeta1.jpg" alt="Servicio de catering" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN MENUES NUESTROS PLATOS -->
+  <section class="py-5 bg-light-gray" id="section-menu">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col text-start">
+          <h1 class="fw-bold text-white" data-aos="fade-right">Nuestros Platos</h1>
+          <p class="text-warning">Conocé nuestras especialidades caseras, ideales para cualquier ocasión.</p>
+        </div>
+      </div>
+
+      <!-- Tarjetas dinámicas (ejemplo estático para diseño) -->
+      <!-- Tarjeta 1 -->
+      <div class="row align-items-center mb-5 flex-md-row" data-aos="fade-up">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <img src="./imagenes/platos/carne1.jpg" class="img-fluid rounded shadow" alt="Plato 1">
+        </div>
+        <div class="col-md-6">
+          <h4 class="fw-bold text-white">Lasagna Casera</h4>
+          <p class="text-white"><strong>Ingredientes:</strong> Pasta fresca, carne, salsa blanca y roja.</p>
+          <p class="text-white">Una receta tradicional italiana con capas generosas y sabor reconfortante.</p>
+          <a href="#section-contact" class="btn btn-outline-warning mt-2">Hacer Pedido</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2 (invertida) -->
+      <div class="row align-items-center mb-5 flex-md-row-reverse" data-aos="fade-up">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <img src="./imagenes/platos/empanada1.jpg" class="img-fluid rounded shadow" alt="Plato 2">
+        </div>
+        <div class="col-md-6">
+          <h4 class="fw-bold text-white">Empanadas Artesanales</h4>
+          <p class="text-white"><strong>Ingredientes:</strong> Carne, cebolla, huevo, especias.</p>
+          <p class="text-white">Hechas a mano con rellenos tradicionales y cocción justa para un bocado perfecto.</p>
+          <a href="#section-contact" class="btn btn-outline-warning mt-2">Hacer Pedido</a>
+        </div>
+      </div>
+
+      <!-- Repetir con loop en backend -->
+
+
+
+    </div>
+  </section>
+
+
+
+  <!-- SECCIÓN NUESTROS SERVICIOS -->
+  <section class="py-5 bg-white" id="section-services">
+    <div class="container">
+      <div class="row mb-4 text-center">
+        <div class="col">
+          <h1 class="fw-bold" data-aos="fade-up">Nuestros Servicios</h1>
+          <p class="text-muted">Ofrecemos las mejores soluciones gastrónimicas para tus eventos.</p>
+        </div>
+      </div>
+
+      <!-- Accordion con imágenes de fondo -->
+      <div class="accordion" id="accordionServicios">
+        <!-- Servicio 1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catering" aria-expanded="true" aria-controls="catering">
+              Catering para Eventos Familiares o Eventos sociales
+            </button>
+          </h2>
+          <div id="catering" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionServicios">
+            <div class="accordion-body bg-img-catering text-white">
+              <p>Nos especializamos en catering casero con presentación profesional para eventos sociales y familiares.</p>
+              <p>Desde viandas individuales hasta grandes celebraciones, adaptamos cada menú.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicio 2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventos2" aria-expanded="false" aria-controls="eventos">
+              Servicio de Catering Personalizado
+            </button>
+          </h2>
+          <div id="eventos2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionServicios">
+            <div class="accordion-body bg-img-eventos2 text-white">
+              <p>Ajustamos la diferente gama de platos para tus eventos de Mediana escala.</p>
+              <p>Ideal para celebraciones de cumpleaños grandes o eventos sociales.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicio 3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventos3" aria-expanded="false" aria-controls="eventos">
+              Servicio de Catering Empresarial
+            </button>
+          </h2>
+          <div id="eventos3" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionServicios">
+            <div class="accordion-body bg-img-eventos3 text-white">
+              <p class="text-white fw-semibold">También coordinamos eventos completos con ambientación, logística y atención personalizada.</p>
+              <p class="text-white fw-semibold">Ideal para celebraciones íntimas o encuentros empresariales.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Contacto directo -->
+      <div class="row mt-5 text-center" data-aos="fade-up">
+        <div class="col">
+          <h4 class="fw-bold">¿Querés contratar nuestros servicios?</h4>
+          <p>Contactanos directamente por nuestras redes:</p>
+          <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+          <a href="https://www.instagram.com/tuusuario" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
         </div>
       </div>
     </div>
@@ -74,7 +195,7 @@
     <div class="container">
       <div class="row text-center mb-4">
         <div class="col">
-          <h3 class="fw-bold">¿Por qué elegirnos?</h3>
+          <h1 class="fw-bold">¿Por qué elegirnos?</h1>
         </div>
       </div>
       <div class="row g-4">
@@ -182,9 +303,9 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-primary text-white text-center py-4">
+  <footer class="bg-light text-dark text-center py-4">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Fatto In Casa - Todos los derechos reservados</p>
+      <p class="mb-0">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
     </div>
   </footer>
 
