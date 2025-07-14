@@ -233,6 +233,7 @@ body#body-panel {
 
 .sidebar {
   background-color: #1f1f1f;
+  height: 100%;
   min-height: 100vh;
   padding-top: 2rem;
 }
@@ -309,11 +310,27 @@ body#body-panel {
     background-color: #1f1f1f;
     min-width: 100vw;
     min-height: auto !important;
-    max-height: 250px;
+    max-height: 300px;
     padding: 1rem;
     justify-content: space-evenly;
   }
 
   
 
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    min-height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: space-around;
+  }
+
+  .sidebar a {
+    flex: 1 1 100%;
+    text-align: center;
+    padding: 0.5rem;
+  }
 }
