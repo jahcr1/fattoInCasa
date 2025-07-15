@@ -99,9 +99,9 @@ unset($_SESSION['mensaje']);
             case 'cargar-menu':
           ?>
               <section id="cargar-menu" class="seccion-panel">
-                <div class="container">
-                  <h4 class="text-white">Cargar nuevo plato</h4>
-                  <form action="./componentes/cargar_plato.php" method="POST" enctype="multipart/form-data" class="bg-dark p-4 rounded shadow">
+                <div class="card bg-dark border-0 shadow p-4 mb-4">
+                  <h5 class="titulo-seccion">Cargar nuevo plato</h5>
+                  <form action="./componentes/cargar_plato.php" method="POST" enctype="multipart/form-data">
 
                     <div class="mb-3">
                       <label class="form-label text-white">Nombre del Plato</label>
@@ -142,8 +142,24 @@ unset($_SESSION['mensaje']);
             case 'mostrar-menu':
             ?>
               <section id="mostrar-menu" class="seccion-panel">
-                <h4 class="text-white">Acá se mostrarán los menús existentes</h4>
-                <!-- Podés cargar dinámicamente desde PHP o JS -->
+                <!--  MOSTRAR MENUES DISPONIBLES -->
+                  <div class="card bg-dark border-0 shadow p-4 mb-4">
+                    <h5 class="titulo-seccion">Menúes Disponibles</h5>
+                    <!-- Podés cargar dinámicamente desde PHP o JS -->
+                     <?php 
+                      include('componentes/conexion.php');
+
+                      $consultar_menu = mysqli_query($conexion, "SELECT * FROM platos WHERE estado = 'Disponible'");
+                      while ($menu_disponible = mysqli_fetch_assoc($consultar_menu)) { ?>
+                        
+                        <div class="mb-3">
+
+                        </div>
+
+                     <?php }
+                     ?>
+
+                  </div>
               </section>
 
             <?php break;
@@ -154,33 +170,42 @@ unset($_SESSION['mensaje']);
                 <!-- FORMULARIO DE PEDIDO -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
                   <h5 class="titulo-seccion">Registrar Pedido</h5>
-                  <form action="./componentes/cargar_menu.php" method="POST">
+                  <form action="./componentes/cargar_pedido.php" method="POST">
                     <div class="row g-3">
                       <div class="col-md-6">
+                        <label class="form-label text-white">Nombre del Cliente</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Apellido del Cliente</label>
                         <input type="text" name="apellido" class="form-control" placeholder="Apellido" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Correo del Cliente</label>
                         <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Teléfono</label>
                         <input type="tel" name="telefono" class="form-control" placeholder="Teléfono" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Ciudad o Localidad</label>
                         <input type="text" name="localidad" class="form-control" placeholder="Localidad" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Dirección del Evento</label>
                         <input type="text" name="direccion" class="form-control" placeholder="Dirección" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Fecha del Evento</label>
                         <input type="date" name="fecha" class="form-control" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Horario del Evento</label>
                         <input type="time" name="horario" class="form-control" required>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Tipo de Evento</label>
                         <select name="tipo_servicio" class="form-select" required>
                           <option value="">Tipo de Servicio</option>
                           <option value="Familiar">Familiar</option>
@@ -189,10 +214,11 @@ unset($_SESSION['mensaje']);
                         </select>
                       </div>
                       <div class="col-md-6">
+                        <label class="form-label text-white">Detalles del Menú y cantidades</label>
                         <textarea name="detalle_menues" class="form-control" rows="2" placeholder="Menúes y cantidades" required></textarea>
                       </div>
                       <div class="col-12">
-                        <button type="submit" class="btn btn-warning w-100">Registrar Pedido</button>
+                        <button type="submit" class="btn btn-warning">Registrar Pedido</button>
                       </div>
                     </div>
                   </form>
