@@ -1,5 +1,6 @@
 <?php
-include('conexion.php');
+session_start();
+require_once('conexion.php');
 
 $nombre = $_POST['nombre'];
 $ingredientes = $_POST['ingredientes'];
@@ -20,6 +21,6 @@ if (mysqli_query($conexion, $query)) {
     $_SESSION['mensaje'] = "Error al guardar el plato.";
 }
 
-header("Location: ../panel.php");
+header("Location: ../panel.php?seccion=cargar-menu");
 exit;
 ?>
