@@ -82,9 +82,9 @@ unset($_SESSION['mensaje']);
           <a href="./componentes/logout.php" class="btn btn-sm btn-outline-warning text-center text-danger" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
           <a class="nav-link-inactive text-white px-4 w-100 text-center">Panel Administrativo</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-menu" class="nav-link">Cargar Menú</a>
-          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-menu" class="nav-link">Mostrar Menúes</a>
+          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-menu" class="nav-link">Mostrar y Modificar Menúes</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=tomar-pedidos" class="nav-link">Cargar Servicio de Catering</a>
-          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-pedidos" class="nav-link">Ver Pedidos</a>
+          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-pedidos" class="nav-link">Ver y Modificar Servicios de Catering</a>
         </div>
 
         <!-- CONTENIDO PRINCIPAL -->
@@ -284,7 +284,7 @@ unset($_SESSION['mensaje']);
               <section id="tomar-pedidos" class="seccion-panel">
                 <!-- FORMULARIO DE PEDIDO -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
-                  <h5 class="titulo-seccion">Registrar Pedido</h5>
+                  <h5 class="titulo-seccion">Registrar Pedido - Servicio</h5>
                   <form action="./componentes/cargar_pedido.php" method="POST">
                     <div class="row g-3">
                       <div class="col-md-6">
@@ -300,11 +300,11 @@ unset($_SESSION['mensaje']);
                         <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                       </div>
                       <div class="col-md-6">
-                        <label class="form-label text-white">Teléfono</label>
+                        <label class="form-label text-white">Teléfono de Contacto</label>
                         <input type="tel" name="telefono" class="form-control" placeholder="Teléfono" required>
                       </div>
                       <div class="col-md-6">
-                        <label class="form-label text-white">Ciudad o Localidad</label>
+                        <label class="form-label text-white">Localidad del Evento</label>
                         <input type="text" name="localidad" class="form-control" placeholder="Localidad" required>
                       </div>
                       <div class="col-md-6">
@@ -345,9 +345,209 @@ unset($_SESSION['mensaje']);
             case 'mostrar-pedidos':
             ?>
               <section id="mostrar-pedidos" class="seccion-panel">
-                <h4 class="text-white">Pedidos cargados</h4>
-                <!-- Acá cargás pedidos -->
+
+                <!-- SUBSECCION: Pedidos Pendientes -->
+                <div class="card bg-dark border-0 shadow p-4 mb-4">
+                  <h5 class="titulo-seccion">Servicios de Catering Pendientes</h5>
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <?php
+                    include('componentes/conexion.php');
+
+                    $pendientes = mysqli_query($conexion, "SELECT * FROM pedidos WHERE estado = 'pendiente' ORDER BY fecha ASC");
+                    if (mysqli_num_rows($pendientes) > 0):
+                      while ($pedido = mysqli_fetch_assoc($pendientes)):
+                    ?>
+                        <div class="col">
+                          <div class="card h-100 shadow-sm bg-light p-3">
+                            <div class="card-body">
+                              <h6 class="fw-bold text-dark mb-2">Cliente: <?= htmlspecialchars($pedido['nombre']) ?> <?= htmlspecialchars($pedido['apellido']) ?></h6>
+                              <p class="mb-1"><strong>Email de contacto:</strong> <?= htmlspecialchars($pedido['email']) ?></p>
+                              <p class="mb-1"><strong>Teléfono de contacto:</strong> <?= htmlspecialchars($pedido['telefono']) ?></p>
+                              <p class="mb-1"><strong>Localidad del evento:</strong> <?= htmlspecialchars($pedido['localidad']) ?></p>
+                              <p class="mb-1"><strong>Dirección del evento:</strong> <?= htmlspecialchars($pedido['direccion']) ?></p>
+                              <p class="mb-1"><strong>Tipo de Evento:</strong> <?= htmlspecialchars($pedido['tipo_servicio']) ?></p>
+                              <p class="mb-1"><strong>Fecha del evento:</strong> <?= htmlspecialchars($pedido['fecha']) ?> | <strong>Hora:</strong> <?= htmlspecialchars($pedido['horario']) ?></p>
+                              <p class="mb-2"><strong>Detalles del menú, etc:</strong> <?= htmlspecialchars($pedido['detalle_menues']) ?></p>
+                              <p class="fw-bold text-warning">Estado: <?= htmlspecialchars($pedido['estado']) ?></p>
+
+                              <!-- Botón para cambiar estado -->
+                              <form method="POST" action="componentes/cambiar_estado_pedido.php" onsubmit="return confirm('¿Seguro que deseas cambiar el estado del pedido?');">
+                                <input type="hidden" name="id_pedido" value="<?= $pedido['id'] ?>">
+                                <select name="nuevo_estado" class="form-select form-select-sm mb-2" required>
+                                  <option value="pendiente" <?= $pedido['estado'] === 'pendiente' ? 'selected' : '' ?>>Pendiente</option>
+                                  <option value="confirmado" <?= $pedido['estado'] === 'confirmado' ? 'selected' : '' ?>>Confirmado</option>
+                                  <option value="rechazado" <?= $pedido['estado'] === 'rechazado' ? 'selected' : '' ?>>Rechazado</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-warning w-100">Actualizar Estado</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                    <?php
+                      endwhile;
+                    else:
+                      echo "<div class='alert alert-warning text-center'>No hay pedidos pendientes.</div>";
+                    endif;
+                    ?>
+                  </div>
+                </div>
+
+                <!-- SUBSECCION: Registro de Pedidos por Estado -->
+                <div class="card bg-dark border-0 shadow p-4 mb-4">
+                  <h5 class="titulo-seccion">Registro de Servicios de Catering</h5>
+                  <div class="mb-4">
+                    <form action="componentes/filtrar_pedidos.php" method="POST" class="row g-3">
+                      <div class="col-md-6">
+                        <select class="form-select" name="estado" required>
+                          <option value="" disabled selected>Seleccione estado</option>
+                          <option value="pendiente">Pendiente</option>
+                          <option value="confirmado">Confirmado</option>
+                          <option value="rechazado">Rechazado</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <button type="submit" class="btn btn-warning w-100">Filtrar Pedidos</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- MOSTRAR PEDIDOS FILTRADOS -->
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <?php
+                    $pedidos_filtrados = [];
+
+                    if (isset($_SESSION['pedidos_filtrados'])) {
+                      $pedidos_filtrados = $_SESSION['pedidos_filtrados'];
+                      unset($_SESSION['pedidos_filtrados']);
+                    }
+
+                    if (!empty($pedidos_filtrados)):
+                      foreach ($pedidos_filtrados as $pedido):
+                    ?>
+                        <div class="col">
+                          <div class="card h-100 shadow-sm bg-light p-3">
+                            <div class="card-body">
+                              <h6 class="fw-bold text-dark mb-2">Cliente: <?= htmlspecialchars($pedido['nombre']) ?> <?= htmlspecialchars($pedido['apellido']) ?></h6>
+                              <p class="mb-1"><strong>Email:</strong> <?= htmlspecialchars($pedido['email']) ?></p>
+                              <p class="mb-1"><strong>Teléfono:</strong> <?= htmlspecialchars($pedido['telefono']) ?></p>
+                              <p class="mb-1"><strong>Localidad:</strong> <?= htmlspecialchars($pedido['localidad']) ?></p>
+                              <p class="mb-1"><strong>Dirección:</strong> <?= htmlspecialchars($pedido['direccion']) ?></p>
+                              <p class="mb-1"><strong>Evento:</strong> <?= htmlspecialchars($pedido['tipo_servicio']) ?></p>
+                              <p class="mb-1"><strong>Fecha:</strong> <?= htmlspecialchars($pedido['fecha']) ?> | <strong>Hora:</strong> <?= htmlspecialchars($pedido['horario']) ?></p>
+                              <p class="mb-2"><strong>Menú:</strong> <?= htmlspecialchars($pedido['detalle_menues']) ?></p>
+                              <p class="fw-bold text-warning">Estado: <?= htmlspecialchars($pedido['estado']) ?></p>
+                            </div>
+                          </div>
+                        </div>
+                    <?php endforeach; else: ?>
+                      <div class="col-12">
+                        <div class="alert alert-info text-center">Seleccione un estado para ver pedidos.</div>
+                      </div>
+                    <?php endif; ?>
+                  </div>
+                </div>
+
+                <!-- SUBSECCION: Modificar un Servicio de Catering -->
+                <div class="card bg-dark border-0 shadow p-4 mb-4">
+                  <h5 class="titulo-seccion">Modificar un Servicio de Catering</h5>
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <?php
+                    include('componentes/conexion.php');
+                    $pedidos = mysqli_query($conexion, "SELECT * FROM pedidos ORDER BY fecha ASC");
+
+                    if (mysqli_num_rows($pedidos) > 0):
+                      while ($pedido = mysqli_fetch_assoc($pedidos)):
+                    ?>
+                        <div class="col">
+                          <div class="card h-100 shadow-sm bg-light p-3">
+                            <form method="POST" action="componentes/modificar_pedido.php" class="d-flex flex-column justify-content-between h-100">
+                              <input type="hidden" name="id_pedido" value="<?= $pedido['id'] ?>">
+
+                              <div class="card-body">
+                                <h6 class="fw-bold text-dark mb-2">ID: <?= htmlspecialchars($pedido['id']) ?></h6>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Nombre del cliente</label>
+                                  <input type="text" class="form-control form-control-sm" name="nombre" value="<?= htmlspecialchars($pedido['nombre']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Apellido del cliente</label>
+                                  <input type="text" class="form-control form-control-sm" name="apellido" value="<?= htmlspecialchars($pedido['apellido']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Email de contacto</label>
+                                  <input type="email" class="form-control form-control-sm" name="email" value="<?= htmlspecialchars($pedido['email']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Teléfono de contacto</label>
+                                  <input type="text" class="form-control form-control-sm" name="telefono" value="<?= htmlspecialchars($pedido['telefono']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Localidad del Evento</label>
+                                  <input type="text" class="form-control form-control-sm" name="localidad" value="<?= htmlspecialchars($pedido['localidad']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Dirección del Evento</label>
+                                  <input type="text" class="form-control form-control-sm" name="direccion" value="<?= htmlspecialchars($pedido['direccion']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Fecha Evento</label>
+                                  <input type="date" class="form-control form-control-sm" name="fecha" value="<?= htmlspecialchars($pedido['fecha']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Horario del Evento</label>
+                                  <input type="time" class="form-control form-control-sm" name="horario" value="<?= htmlspecialchars($pedido['horario']) ?>" required>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Tipo de Servicio de Catering</label>
+                                  <select name="tipo_servicio" class="form-select form-select-sm" required>
+                                    <option value="Familiar" <?= $pedido['tipo_servicio'] === 'Familiar' ? 'selected' : '' ?>>Familiar</option>
+                                    <option value="Evento" <?= $pedido['tipo_servicio'] === 'Evento' ? 'selected' : '' ?>>Evento</option>
+                                    <option value="Empresarial" <?= $pedido['tipo_servicio'] === 'Empresarial' ? 'selected' : '' ?>>Empresarial</option>
+                                  </select>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Detalles del Menú, precio, etc</label>
+                                  <textarea name="detalle_menues" class="form-control form-control-sm" rows="2" required><?= htmlspecialchars($pedido['detalle_menues']) ?></textarea>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Estado del Servicio de Catering</label>
+                                  <select name="estado" class="form-select form-select-sm" required>
+                                    <option value="pendiente" <?= $pedido['estado'] === 'pendiente' ? 'selected' : '' ?>>Pendiente</option>
+                                    <option value="confirmado" <?= $pedido['estado'] === 'confirmado' ? 'selected' : '' ?>>Confirmado</option>
+                                    <option value="rechazado" <?= $pedido['estado'] === 'rechazado' ? 'selected' : '' ?>>Rechazado</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div class="card-footer bg-transparent border-0 p-0">
+                                <button type="submit" class="btn btn-warning w-100">Guardar Cambios</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                    <?php
+                      endwhile;
+                    else:
+                      echo "<div class='alert alert-info text-center'>No hay pedidos para mostrar.</div>";
+                    endif;
+                    ?>
+                  </div>
+                </div>
+
+
               </section>
+
 
             <?php break;
 
