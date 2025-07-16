@@ -145,21 +145,136 @@ unset($_SESSION['mensaje']);
                 <!--  MOSTRAR MENUES DISPONIBLES -->
                   <div class="card bg-dark border-0 shadow p-4 mb-4">
                     <h5 class="titulo-seccion">Menúes Disponibles</h5>
-                    <!-- Podés cargar dinámicamente desde PHP o JS -->
-                     <?php 
+                    
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                      <?php 
                       include('componentes/conexion.php');
 
                       $consultar_menu = mysqli_query($conexion, "SELECT * FROM platos WHERE estado = 'Disponible'");
-                      while ($menu_disponible = mysqli_fetch_assoc($consultar_menu)) { ?>
-                        
-                        <div class="mb-3">
+                      while ($menu_disponible = mysqli_fetch_assoc($consultar_menu)) { 
+                        $img_data = base64_encode($menu_disponible['ci_imagen_plato']);
+                        $img_type = $menu_disponible['formato_imagen'];
+                        $img_src = !empty($img_data) ? "data:$img_type;base64,$img_data" : null;
+                      ?>
 
+                      <div class="col">
+                        <div class="card h-100 shadow-sm">
+                          <?php if ($img_src): ?>
+                            <img src="<?= $img_src ?>" class="card-img-top img-fluid img-menu" alt="Imagen del plato">
+                          <?php else: ?>
+                            <div class="text-center p-5 text-muted">Sin imagen disponible</div>
+                          <?php endif; ?>
+
+                          <div class="card-body d-flex flex-column body-menu">
+                            <h5 class="card-title text-center"><?= htmlspecialchars($menu_disponible['nombre']) ?></h5>
+                            <p class="text-muted mb-1"><strong>Ingredientes:</strong> <?= htmlspecialchars($menu_disponible['ingredientes']) ?></p>
+                            <p class="mb-2"><strong>Descripción:</strong> <?= htmlspecialchars($menu_disponible['descripcion']) ?></p>
+                            <p class="mb-2"><strong>Disponibilidad del plato:</strong> <?= htmlspecialchars($menu_disponible['estado']) ?></p>
+                            
+
+                          </div>
                         </div>
+                      </div>
 
-                     <?php }
-                     ?>
+                      <?php } ?>
+                    </div>
 
                   </div>
+
+                <!--  MODIFICAR MENUES -->
+                  <div class="card bg-dark border-0 shadow p-4 mb-4">
+                    <h5 class="titulo-seccion">Modificar un Menú </h5>
+
+                    <!-- FORMULARIO DE FILTRO -->
+                    <div class="row g-3 mb-4 ps-4">
+                      <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xsm-12">
+                          <form action="componentes/modificar_menu.php" method="POST">
+                            <label class="form-label text-white">Elija un plato a modificar según su estado:</label>
+                            <select class="form-select form-select-sm" name="estado" required>
+                              <option value="" disabled selected>Elegir una opción</option>
+                              <option value="Disponible">Disponible</option>
+                              <option value="No disponible">No disponible</option>
+                            </select>
+                            <button type="submit" class="btn btn-warning text-dark mt-2 btn-sm">Buscar Menúes</button>
+                          </form>
+                      </div>
+                    </div>
+                    
+                    <!--  MENUES FILTRADOS  -->
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 menu-filtrado">
+                      <?php 
+                      
+                      $platos = [];
+
+                      if (isset($_SESSION['platos'])) {
+                        $platos = $_SESSION['platos'];
+                        unset($_SESSION['platos']); // limpiamos para que no se mantenga
+                      }
+
+                      if (empty($platos)): ?>
+                        <div class="col-12">
+                          <div class="alert alert-warning text-center ms-4">Buscá cualquier plato con el estado seleccionado.</div>
+                        </div>
+                      <?php else:
+                        foreach ($platos as $plato): 
+                          $img_data = base64_encode($plato['ci_imagen_plato']);
+                          $img_type = $plato['formato_imagen'];
+                          $img_src = !empty($img_data) ? "data:$img_type;base64,$img_data" : null;
+                      ?>
+                        <div class="col">
+                          <form class="card h-100 shadow-sm p-3 d-flex flex-column" method="POST" action="componentes/modificar_menu.php" enctype="multipart/form-data">
+                            <input type="hidden" name="id_plato" value="<?= $plato['id'] ?>">
+
+                            <?php if ($img_src): ?>
+                              <img src="<?= $img_src ?>" class="card-img-top img-fluid img-menu mb-3" alt="Imagen del plato">
+                            <?php else: ?>
+                              <div class="text-center p-5 text-muted">Sin imagen disponible</div>
+                            <?php endif; ?>
+
+                            <div class="card-body flex-grow-1">
+                              <div class="mb-2">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($plato['nombre']) ?>" required>
+                              </div>
+
+                              <div class="mb-2">
+                                <label class="form-label">Ingredientes</label>
+                                <textarea name="ingredientes" class="form-control" required><?= htmlspecialchars($plato['ingredientes']) ?></textarea>
+                              </div>
+
+                              <div class="mb-2">
+                                <label class="form-label">Descripción</label>
+                                <textarea name="descripcion" class="form-control"><?= htmlspecialchars($plato['descripcion']) ?></textarea>
+                              </div>
+
+                              <div class="mb-3">
+                                <label class="form-label">Nueva Imagen (opcional)</label>
+                                <input type="file" name="nueva_imagen" accept="image/*" class="form-control form-control-sm">
+                              </div>
+
+                              <div class="mb-2">
+                                <label class="form-label d-block">Estado</label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="estado" value="Disponible" id="disponible<?= $plato['id'] ?>" <?= $plato['estado'] === 'Disponible' ? 'checked' : '' ?>>
+                                  <label class="form-check-label" for="disponible<?= $plato['id'] ?>">Disponible</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="estado" value="No disponible" id="noDisponible<?= $plato['id'] ?>" <?= $plato['estado'] === 'No disponible' ? 'checked' : '' ?>>
+                                  <label class="form-check-label text-danger" for="noDisponible<?= $plato['id'] ?>">No disponible</label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="mt-auto">
+                              <button type="submit" class="btn btn-warning w-100">Modificar Menú</button>
+                            </div>
+                          </form>
+                        </div>
+                      <?php endforeach; endif; ?>
+
+                    </div>
+                  </div>
+
               </section>
 
             <?php break;
@@ -346,6 +461,14 @@ unset($_SESSION['mensaje']);
       }, 500);
 
     });
+  </script>
+
+  <!-- Script de confirmacion de cambio de estado de un plato -->
+  <script>
+    function confirmarCambioEstado(form) {
+      const estadoSeleccionado = form.querySelector('input[name="estado"]:checked').value;
+      return confirm('¿Estás seguro de cambiar el estado de este plato a "${estadoSeleccionado}"?');
+    }
   </script>
 
 
