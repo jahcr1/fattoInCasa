@@ -251,10 +251,26 @@ body#body-panel {
 
 .titulo-seccion {
       font-weight: bold;
+      font-size: 1.5rem;
       border-left: 4px solid #ffc107;
       padding-left: 10px;
       color: #ffc107;
       margin-bottom: 1.5rem;
+      
+}
+
+/***********************************************/
+/*********  SECCION MOSTRAR MENUES  ************/
+/***********************************************/
+
+.card img.img-menu {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.card-body.body-menu {
+  display: flex;
+  flex-direction: column;
 }
 
 
