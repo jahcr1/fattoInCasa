@@ -1,7 +1,7 @@
 /* styles.css */
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -118,21 +118,23 @@ body {
 
 /* Imagen de fondo en accordion */
 .bg-img-catering {
-  background: url('../imagenes/servicios/familiar1.jpg') center/cover no-repeat;
+  background: url("../imagenes/servicios/familiar1.jpg") center/cover no-repeat;
   padding: 1.5rem;
   border-radius: 0rem;
   backdrop-filter: brightness(0.6);
 }
 
 .bg-img-eventos2 {
-  background: url('../imagenes/servicios/personalizado1.jpg') center/cover no-repeat;
+  background: url("../imagenes/servicios/personalizado1.jpg") center/cover
+    no-repeat;
   padding: 1.5rem;
   border-radius: 0rem;
   backdrop-filter: brightness(0.6);
 }
 
 .bg-img-eventos3 {
-  background: url('../imagenes/servicios/empresarial1.jpg') center/cover no-repeat;
+  background: url("../imagenes/servicios/empresarial1.jpg") center/cover
+    no-repeat;
   padding: 1.5rem;
   border-radius: 0rem;
   backdrop-filter: brightness(0.6);
@@ -166,7 +168,6 @@ body {
   position: relative;
 }
 
-
 /* Hace que la imagen escale correctamente y se recorte como fondo */
 .slide-img-container {
   position: absolute;
@@ -192,7 +193,7 @@ body {
 
 /* Fondo oscuro degradado más estético */
 .bg-gradient-dark {
-  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
   z-index: 1;
 }
 
@@ -200,7 +201,7 @@ body {
 .card-img-overlay h5 {
   z-index: 2;
   font-weight: 600;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 0.5rem 1rem;
   border-radius: 0.4rem;
 }
@@ -216,7 +217,6 @@ body {
 .swiper-slide .card {
   height: 100%;
 }
-
 
 /**************************************************/
 /**************************************************/
@@ -245,18 +245,18 @@ body#body-panel {
   padding: 0.75rem 1.2rem;
 }
 
-.sidebar a:hover, .sidebar .active {
-      background-color: #343434;
+.sidebar a:hover,
+.sidebar .active {
+  background-color: #343434;
 }
 
 .titulo-seccion {
-      font-weight: bold;
-      font-size: 1.5rem;
-      border-left: 4px solid #ffc107;
-      padding-left: 10px;
-      color: #ffc107;
-      margin-bottom: 1.5rem;
-      
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-left: 4px solid #ffc107;
+  padding-left: 10px;
+  color: #ffc107;
+  margin-bottom: 1.5rem;
 }
 
 /***********************************************/
@@ -266,14 +266,17 @@ body#body-panel {
 .card img.img-menu {
   max-height: 200px;
   object-fit: cover;
+  border-radius: 8px;
+}
+
+textarea {
+  resize: vertical;
 }
 
 .card-body.body-menu {
   display: flex;
   flex-direction: column;
 }
-
-
 
 /**************************************************/
 /**************************************************/
@@ -330,9 +333,6 @@ body#body-panel {
     padding: 1rem;
     justify-content: space-evenly;
   }
-
-  
-
 }
 
 @media (max-width: 991px) {
