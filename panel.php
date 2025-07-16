@@ -79,7 +79,7 @@ unset($_SESSION['mensaje']);
 
         <!-- SIDEBAR -->
         <div class="col-12 col-lg-2 sidebar sticky-top">
-          <a href="./componentes/logout.php" class="btn btn-sm btn-outline-warning text-center text-danger" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
+          <a href="./componentes/logout.php" class="btn btn-sm btn-warning text-center text-danger" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
           <a class="nav-link-inactive text-white px-4 w-100 text-center">Panel Administrativo</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-menu" class="nav-link">Cargar Menú</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-menu" class="nav-link">Mostrar y Modificar Menúes</a>
@@ -571,29 +571,18 @@ unset($_SESSION['mensaje']);
 
   <?php } ?>
 
+  <footer class="footer bg-dark text-white text-center py-3 fixed-bottom">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
+    </div>
+  </footer>
+
 
   <!-- BOTÓN VOLVER ARRIBA -->
   <button id="btn-scroll-top" title="Subir">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- SCRIPT SCRIPT PARA EL BOTON DE VOLVER ARRIBA -->
-  <script>
-    // Mostrar u ocultar el botón al hacer scroll
-    window.addEventListener("scroll", function() {
-      const btn = document.getElementById("btn-scroll-top");
-      if (window.scrollY > 200) {
-        btn.style.display = "flex";
-      } else {
-        btn.style.display = "none";
-      }
-    });
-
-    // Acción al hacer clic: subir al inicio con smooth scroll
-    document.getElementById("btn-scroll-top").addEventListener("click", function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
 
 
   <!-- jQuery JS -->
@@ -698,6 +687,24 @@ unset($_SESSION['mensaje']);
       const estadoSeleccionado = form.querySelector('input[name="estado"]:checked').value;
       return confirm('¿Estás seguro de cambiar el estado de este plato a "${estadoSeleccionado}"?');
     }
+  </script>
+
+  <!-- SCRIPT SCRIPT PARA EL BOTON DE VOLVER ARRIBA -->
+  <script>
+    // Mostrar u ocultar el botón al hacer scroll
+    window.addEventListener("scroll", function() {
+      const btn = document.getElementById("btn-scroll-top");
+      if (window.scrollY > 200) {
+        btn.style.display = "flex";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+
+    // Acción al hacer clic: subir al inicio con smooth scroll
+    document.getElementById("btn-scroll-top").addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 
   <!-- SCRIPT PARA OCULTAR Y MOSTRAR SIDEBAR EN MOBILE -->
