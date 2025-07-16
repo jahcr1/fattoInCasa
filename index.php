@@ -253,7 +253,14 @@ include './componentes/conexion.php';
                 <img src="./imagenes/sliders/evento0.jpg" class="img-slide" alt="Evento 1">
               </div>
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
-                <h5 class="card-title">“¡Increíble presentación y sabor!”</h5>
+                <figure>
+                  <blockquote class="blockquote">
+                    <p>Increible presentación y sabor, los platos muy producidos.</p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">
+                    Javier Saviola jugador de <cite title="River Plate">Club Atlético River Plate</cite>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
@@ -264,7 +271,14 @@ include './componentes/conexion.php';
                 <img src="./imagenes/sliders/evento1.jpg" class="img-slide" alt="Evento 2">
               </div>
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
-                <h5 class="card-title">“El mejor catering que hemos contratado”</h5>
+                <figure class="text-center">
+                  <blockquote class="blockquote">
+                    <p>A well-known quote, contained in a blockquote element.</p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">
+                    Someone famous in <cite title="Source Title">Source Title</cite>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
@@ -277,7 +291,14 @@ include './componentes/conexion.php';
               </div>
               <!-- Overlay con fondo oscuro -->
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
-                <h5 class="card-title">“Todo llegó a tiempo y fue delicioso”</h5>
+                <figure class="text-center">
+                  <blockquote class="blockquote">
+                    <p>A well-known quote, contained in a blockquote element.</p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">
+                    Someone famous in <cite title="Source Title">Source Title</cite>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
@@ -288,7 +309,14 @@ include './componentes/conexion.php';
                 <img src="./imagenes/sliders/evento1.jpg" class="img-slide" alt="Evento 2">
               </div>
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
-                <h5 class="card-title">“El mejor catering que hemos contratado2”</h5>
+                <figure class="text-end">
+                  <blockquote class="blockquote">
+                    <p>La mejor comida que probé, el mejor servicio que contraté.</p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">
+                    Martina Stoessel <cite title="TINITINITINI">- TINI</cite>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
