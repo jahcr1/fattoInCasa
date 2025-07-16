@@ -78,7 +78,7 @@ unset($_SESSION['mensaje']);
       <div class="row flex-lg-nowrap">
 
         <!-- SIDEBAR -->
-        <div class="col-12 col-lg-2 sidebar">
+        <div class="col-12 col-lg-2 sidebar sticky-top">
           <a href="./componentes/logout.php" class="btn btn-sm btn-outline-warning text-center text-danger" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
           <a class="nav-link-inactive text-white px-4 w-100 text-center">Panel Administrativo</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-menu" class="nav-link">Cargar Menú</a>
@@ -324,7 +324,7 @@ unset($_SESSION['mensaje']);
                         <select name="tipo_servicio" class="form-select" required>
                           <option value="">Tipo de Servicio</option>
                           <option value="Familiar">Familiar</option>
-                          <option value="Evento">Evento</option>
+                          <option value="Social">Social</option>
                           <option value="Empresarial">Empresarial</option>
                         </select>
                       </div>
@@ -510,7 +510,7 @@ unset($_SESSION['mensaje']);
                                   <label class="form-label small">Tipo de Servicio de Catering</label>
                                   <select name="tipo_servicio" class="form-select form-select-sm" required>
                                     <option value="Familiar" <?= $pedido['tipo_servicio'] === 'Familiar' ? 'selected' : '' ?>>Familiar</option>
-                                    <option value="Evento" <?= $pedido['tipo_servicio'] === 'Evento' ? 'selected' : '' ?>>Evento</option>
+                                    <option value="Social" <?= $pedido['tipo_servicio'] === 'Social' ? 'selected' : '' ?>>Social</option>
                                     <option value="Empresarial" <?= $pedido['tipo_servicio'] === 'Empresarial' ? 'selected' : '' ?>>Empresarial</option>
                                   </select>
                                 </div>

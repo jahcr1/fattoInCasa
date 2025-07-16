@@ -35,7 +35,7 @@ include './componentes/conexion.php';
 
 <body>
   <!-- NAVBAR PERSONALIZADO -->
-  <nav class="navbar navbar-dark bg-dark py-3">
+  <nav class="navbar navbar-dark bg-dark py-3 sticky-top">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
 
       <!-- Bloque de enlaces -->
