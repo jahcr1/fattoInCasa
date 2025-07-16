@@ -49,7 +49,7 @@ unset($_SESSION['mensaje']);
   <!-- NAV PRINCIPAL -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 pt-3">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.php" onclick="return confirm('¿Estás seguro de que querés ir a la página principal?');">Fatto In Casa</a>
+      <a class="navbar-brand" href="index.php" target="_blank" onclick="return confirm('¿Estás seguro de que querés ir a la página principal?');">Fatto In Casa</a>
 
       <div class="d-flex ms-auto">
         <?php if (isset($_SESSION['administrador'])): ?>
