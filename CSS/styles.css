@@ -269,7 +269,14 @@ body#body-panel {
   height: 100%;
   min-height: 100vh;
   padding-top: 2rem;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
+
+.sidebar.hidden {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
 
 .sidebar a {
   color: #ffc107;
@@ -365,16 +372,20 @@ textarea {
     max-height: 300px;
     padding: 1rem;
     justify-content: space-evenly;
+
   }
+
+
 }
 
 @media (max-width: 991px) {
+
   .sidebar {
     min-height: auto;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1rem;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 
   .sidebar a {

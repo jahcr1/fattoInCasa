@@ -700,6 +700,29 @@ unset($_SESSION['mensaje']);
     }
   </script>
 
+  <!-- SCRIPT PARA OCULTAR Y MOSTRAR SIDEBAR EN MOBILE -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const sidebar = document.querySelector(".sidebar");
+
+      window.addEventListener("scroll", function () {
+        if (window.innerWidth <= 991) { // Solo en móviles
+          const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+          if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // Scroll hacia abajo -> ocultar
+            sidebar.classList.add("hidden");
+          } else {
+            // Scroll hacia arriba -> mostrar
+            sidebar.classList.remove("hidden");
+          }
+          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Evitar valores negativos
+        }
+      });
+    });
+  </script>
+
 
 </body>
 
