@@ -337,6 +337,13 @@ include './componentes/conexion.php';
     </div>
   </footer>
 
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button id="btn-scroll-top" title="Subir">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  
+
   <!-- Incluyendo BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
 
@@ -346,7 +353,7 @@ include './componentes/conexion.php';
   <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
-  <!-- Script para Swiper-->
+  <!-- Script para Swiper y AOS -->
   <script>
     AOS.init();
 
@@ -360,6 +367,24 @@ include './componentes/conexion.php';
         el: ".swiper-pagination",
         clickable: true,
       }
+    });
+  </script>
+
+  <!-- SCRIPT PARA EL BOTON DE VOLVER ARRIBA  -->
+  <script>
+    // Mostrar u ocultar el botón al hacer scroll
+    window.addEventListener("scroll", function() {
+      const btn = document.getElementById("btn-scroll-top");
+      if (window.scrollY > 200) {
+        btn.style.display = "flex";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+
+    // Acción al hacer clic: subir al inicio con smooth scroll
+    document.getElementById("btn-scroll-top").addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 

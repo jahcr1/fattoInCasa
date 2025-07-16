@@ -5,6 +5,39 @@ body {
   scroll-behavior: smooth;
 }
 
+
+/****************************************************/
+/**********   BOTON PARA VOLVER ARRIBA  *************/
+/****************************************************/
+
+#btn-scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: #ffc107; /* Amarillo tipo Bootstrap warning */
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  display: none; /* Oculto por defecto */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+#btn-scroll-top:hover {
+  background-color: #ffcd39; /* Un tono más claro */
+  transform: scale(1.1);
+}
+
+#btn-scroll-top i {
+  font-size: 18px;
+}
+
 /****************************************************/
 /************   NAVBAR PERSONALIZADO  ***************/
 /****************************************************/

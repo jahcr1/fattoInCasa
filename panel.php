@@ -572,6 +572,30 @@ unset($_SESSION['mensaje']);
   <?php } ?>
 
 
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button id="btn-scroll-top" title="Subir">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- SCRIPT SCRIPT PARA EL BOTON DE VOLVER ARRIBA -->
+  <script>
+    // Mostrar u ocultar el botón al hacer scroll
+    window.addEventListener("scroll", function() {
+      const btn = document.getElementById("btn-scroll-top");
+      if (window.scrollY > 200) {
+        btn.style.display = "flex";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+
+    // Acción al hacer clic: subir al inicio con smooth scroll
+    document.getElementById("btn-scroll-top").addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+
   <!-- jQuery JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <!-- BOOTSTRAP JS -->
