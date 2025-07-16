@@ -102,36 +102,41 @@ unset($_SESSION['mensaje']);
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
                   <h5 class="titulo-seccion">Cargar nuevo plato</h5>
                   <form action="./componentes/cargar_plato.php" method="POST" enctype="multipart/form-data">
+                    <div class="row ps-2">
+                      <div class="mb-3 col-xl-5 col-lg-5 col-md-6 col-sm-8">
+                        <label class="form-label text-white">Nombre del Plato</label>
+                        <input type="text" name="nombre" class="form-control" placeholder="Locro" required>
+                      </div>
 
-                    <div class="mb-3">
-                      <label class="form-label text-white">Nombre del Plato</label>
-                      <input type="text" name="nombre" class="form-control" required>
-                    </div>
+                      <div class="mb-3 col-xl-8 col-lg-8 col-md-8 col-sm-10">
+                        <label class="form-label text-white">Ingredientes</label>
+                        <textarea name="ingredientes" class="form-control" placeholder="Zapallo inglés, Carne de Guanaco, Maiz.." required></textarea>
+                      </div>
 
-                    <div class="mb-3">
-                      <label class="form-label text-white">Ingredientes</label>
-                      <textarea name="ingredientes" class="form-control" required></textarea>
-                    </div>
+                      <div class="mb-3 col-xl-8 col-lg-8 col-md-8 col-sm-10">
+                        <label class="form-label text-white">Descripción</label>
+                        <textarea name="descripcion" class="form-control" placeholder="Locro criollo con ingredientes de lujo, carne de Guanaco, Maiz y mucho más.."></textarea>
+                      </div>
 
-                    <div class="mb-3">
-                      <label class="form-label text-white">Descripción</label>
-                      <textarea name="descripcion" class="form-control"></textarea>
-                    </div>
+                      <div class="mb-3 col-xl-6 col-lg-6 col-md-8 col-sm-10">
+                        <label class="form-label text-white">Imagen del plato</label>
+                        <input type="file" name="imagen" class="form-control" accept="image/*" required>
+                      </div>
 
-                    <div class="mb-3">
-                      <label class="form-label text-white">Imagen del plato</label>
-                      <input type="file" name="imagen" class="form-control" accept="image/*" required>
-                    </div>
+                      <div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-8">
+                        <label class="form-label text-white">Estado</label>
+                        <select name="estado" class="form-select">
+                          <option value="" disabled selected>Selecciona una opción</option>
+                          <option value="Disponible">Disponible</option>
+                          <option value="No disponible">No disponible</option>
+                        </select>
+                      </div>
 
-                    <div class="mb-3">
-                      <label class="form-label text-white">Estado</label>
-                      <select name="estado" class="form-select">
-                        <option value="Disponible" selected>Disponible</option>
-                        <option value="No disponible">No disponible</option>
-                      </select>
-                    </div>
+                      <div class="mt-3 mb-3">
+                        <button type="submit" class="btn btn-warning" style="min-width: 250px;">Guardar plato</button>
+                      </div>
 
-                    <button type="submit" class="btn btn-warning">Guardar plato</button>
+                    </div> 
                   </form>
                 </div>
 
@@ -286,12 +291,12 @@ unset($_SESSION['mensaje']);
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
                   <h5 class="titulo-seccion">Registrar Pedido - Servicio</h5>
                   <form action="./componentes/cargar_pedido.php" method="POST">
-                    <div class="row g-3">
-                      <div class="col-md-6">
+                    <div class="row g-3 justify-content-between">
+                      <div class="col-md-3">
                         <label class="form-label text-white">Nombre del Cliente</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <label class="form-label text-white">Apellido del Cliente</label>
                         <input type="text" name="apellido" class="form-control" placeholder="Apellido" required>
                       </div>
@@ -299,7 +304,7 @@ unset($_SESSION['mensaje']);
                         <label class="form-label text-white">Correo del Cliente</label>
                         <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                         <label class="form-label text-white">Teléfono de Contacto</label>
                         <input type="tel" name="telefono" class="form-control" placeholder="Teléfono" required>
                       </div>
@@ -315,11 +320,11 @@ unset($_SESSION['mensaje']);
                         <label class="form-label text-white">Fecha del Evento</label>
                         <input type="date" name="fecha" class="form-control" required>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <label class="form-label text-white">Horario del Evento</label>
                         <input type="time" name="horario" class="form-control" required>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <label class="form-label text-white">Tipo de Evento</label>
                         <select name="tipo_servicio" class="form-select" required>
                           <option value="">Tipo de Servicio</option>
@@ -332,8 +337,8 @@ unset($_SESSION['mensaje']);
                         <label class="form-label text-white">Detalles del Menú y cantidades</label>
                         <textarea name="detalle_menues" class="form-control" rows="2" placeholder="Menúes y cantidades" required></textarea>
                       </div>
-                      <div class="col-12">
-                        <button type="submit" class="btn btn-warning">Registrar Pedido</button>
+                      <div class="col-12 mt-4">
+                        <button type="submit" class="btn btn-warning" style="min-width: 250px;">Registrar Pedido</button>
                       </div>
                     </div>
                   </form>
@@ -397,16 +402,16 @@ unset($_SESSION['mensaje']);
                   <h5 class="titulo-seccion">Registro de Servicios de Catering</h5>
                   <div class="mb-4">
                     <form action="componentes/filtrar_pedidos.php" method="POST" class="row g-3">
-                      <div class="col-md-6">
+                      <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-10">
                         <select class="form-select" name="estado" required>
-                          <option value="" disabled selected>Seleccione estado</option>
+                          <option value="" disabled selected>Seleccione un estado</option>
                           <option value="pendiente">Pendiente</option>
                           <option value="confirmado">Confirmado</option>
                           <option value="rechazado">Rechazado</option>
                         </select>
                       </div>
-                      <div class="col-md-6">
-                        <button type="submit" class="btn btn-warning w-100">Filtrar Pedidos</button>
+                      <div class="col-6">
+                        <button type="submit" class="btn btn-warning" style="min-width: 200px;">Filtrar Pedidos</button>
                       </div>
                     </form>
                   </div>
