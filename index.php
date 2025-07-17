@@ -40,10 +40,10 @@ include './componentes/conexion.php';
 
       <!-- Bloque de enlaces -->
       <div class="d-flex flex-wrap gap-3 nav-links">
-        <a href="#section-hero" class="custom-link">Inicio</a>
-        <a href="#section-menu" class="custom-link">Menúes</a>
-        <a href="#section-services" class="custom-link">Nuestros servicios</a>
-        <a href="#section-services" class="custom-link">Contáctanos</a>
+        <a href="index.php#section-hero" class="custom-link">Inicio</a>
+        <a href="index.php#section-menu" class="custom-link">Menúes</a>
+        <a href="index.php#section-services" class="custom-link">Nuestros servicios</a>
+        <a href="index.php#section-cards" class="custom-link">Contáctanos</a>
       </div>
 
       <!-- Bloque de logo + nombre -->
@@ -122,10 +122,22 @@ include './componentes/conexion.php';
   <!-- SECCIÓN NUESTROS SERVICIOS -->
   <section class="py-5 bg-white" id="section-services">
     <div class="container">
-      <div class="row mb-4 text-center">
+      <!-- Contacto directo -->
+      <div class="row text-center justify-content-center redes-container" data-aos="fade-up">
+        <div class="row mb-4 ">
+          <div class="col">
+            <h1 class="fw-bold">¿Querés contratar nuestros servicios?</h1>
+            <p>Contactanos directamente por nuestras redes:</p>
+            <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/tuusuario" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row text-start servicios-container">
         <div class="col">
           <h1 class="fw-bold" data-aos="fade-up">Nuestros Servicios</h1>
-          <p class="text-muted">Ofrecemos las mejores soluciones gastrónimicas para tus eventos.</p>
+          <p class="text-muted">Ofrecemos los mejores platos gastrónimicos para tus eventos.</p>
         </div>
       </div>
 
@@ -178,15 +190,7 @@ include './componentes/conexion.php';
 
       </div>
 
-      <!-- Contacto directo -->
-      <div class="row mt-5 text-center" data-aos="fade-up">
-        <div class="col">
-          <h4 class="fw-bold">¿Querés contratar nuestros servicios?</h4>
-          <p>Contactanos directamente por nuestras redes:</p>
-          <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-          <a href="https://www.instagram.com/tuusuario" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
-        </div>
-      </div>
+      
     </div>
   </section>
 

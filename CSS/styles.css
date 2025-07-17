@@ -38,6 +38,27 @@ body {
   font-size: 18px;
 }
 
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/************   INDEX.PHP  ************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+
+section#section-hero {
+  scroll-margin-top: 100px;
+}
+section#section-menu {
+  scroll-margin-top: 100px;
+}
+section#section-services {
+  scroll-margin-top: 100px;
+}
+section#section-cards {
+  scroll-margin-top: 100px;
+}
+
 /****************************************************/
 /************   NAVBAR PERSONALIZADO  ***************/
 /****************************************************/
@@ -171,6 +192,18 @@ body {
   padding: 1.5rem;
   border-radius: 0rem;
   backdrop-filter: brightness(0.6);
+}
+
+div.redes-container {
+  margin-top: 120px;
+}
+
+div.servicios-container {
+  margin-top: 80px;
+}
+
+div#accordionServicios {
+  margin: 20px 0 50px 0;
 }
 
 /**************************************************/
@@ -393,4 +426,18 @@ textarea {
     text-align: center;
     padding: 0.5rem;
   }
+
+  section#section-hero {
+    scroll-margin-top: 150px;
+  }
+  section#section-menu {
+    scroll-margin-top: 150px;
+  }
+  section#section-services {
+    scroll-margin-top: 150px;
+  }
+  section#section-cards {
+    scroll-margin-top: 150px;
+  }
+
 }
