@@ -33,9 +33,9 @@ include './componentes/conexion.php';
 
 </head>
 
-<body>
+<body id="index-body">
   <!-- NAVBAR PERSONALIZADO -->
-  <nav class="navbar navbar-dark bg-dark py-3 sticky-top">
+  <nav class="navbar navbar-light bg-light py-3 index-nav">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
 
       <!-- Bloque de enlaces -->
@@ -46,10 +46,9 @@ include './componentes/conexion.php';
         <a href="index.php#section-cards" class="custom-link">Contáctanos</a>
       </div>
 
-      <!-- Bloque de logo + nombre -->
+      <!-- Bloque del nombre de la marca -->
       <div class="branding-container d-flex align-items-center mt-3 mt-md-0 fade-in-right">
-        <span class="brand-name text-white fw-bold fs-5 me-3">Fatto In Casa</span>
-        <img src="./imagenes/logo/logo1.png" alt="Logo" class="logo-img">
+        <span class="brand-name fw-bold fs-4">Fatto In Casa</span>
       </div>
 
     </div>
@@ -117,10 +116,8 @@ include './componentes/conexion.php';
     </div>
   </section>
 
-
-
   <!-- SECCIÓN NUESTROS SERVICIOS -->
-  <section class="py-5 bg-white" id="section-services">
+  <section class="py-5 bg-light" id="section-services">
     <div class="container">
       <!-- Contacto directo -->
       <div class="row text-center justify-content-center redes-container" data-aos="fade-up">
@@ -195,7 +192,7 @@ include './componentes/conexion.php';
   </section>
 
   <!-- SECCIÓN DE 3 TARJETAS -->
-  <section class="py-5" id="section-cards">
+  <section class="py-5 bg-light" id="section-cards">
     <div class="container">
       <div class="row text-center mb-4">
         <div class="col">
@@ -238,7 +235,7 @@ include './componentes/conexion.php';
   </section>
 
   <!-- SECCIÓN SLIDER SWIPER -->
-  <section class="py-5 bg-dark text-white" id="section-slider">
+  <section class="py-5 bg-light-gray text-white" id="section-slider">
     <div class="container">
       <div class="row mb-4 text-center">
         <div class="col">
@@ -391,6 +388,35 @@ include './componentes/conexion.php';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.querySelector(".index-nav");
+    if (!navbar) return;
+
+    let lastScrollTop = 0;
+    const scrollThreshold = 10;
+
+    function handleScroll() {
+      const currentScroll = window.scrollY;
+
+      if (Math.abs(currentScroll - lastScrollTop) > scrollThreshold) {
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+          // Scrolleando hacia abajo
+          navbar.classList.add("hidden");
+        } else {
+          // Scrolleando hacia arriba
+          navbar.classList.remove("hidden");
+        }
+        lastScrollTop = currentScroll;
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+  });
+  </script>
+
+
 
 </body>
 
