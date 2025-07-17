@@ -28,19 +28,6 @@ unset($_SESSION['mensaje']);
   <!-- CSS PROPIO -->
   <link rel="stylesheet" href="CSS/styles.css">
 
-  <style>
-    .estado-pendiente {
-      color: orange;
-    }
-
-    .estado-confirmado {
-      color: limegreen;
-    }
-
-    .estado-rechazado {
-      color: red;
-    }
-  </style>
 
 </head>
 
@@ -48,7 +35,7 @@ unset($_SESSION['mensaje']);
 
   <!-- NAV PRINCIPAL -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 pt-3">
-    <div class="container-fluid">
+    <div class="container-fluid justify-content-around">
       <a class="navbar-brand" href="index.php" target="_blank" onclick="return confirm('¿Estás seguro de que querés ir a la página principal?');">Fatto In Casa</a>
 
       <div class="d-flex ms-auto">
@@ -57,11 +44,21 @@ unset($_SESSION['mensaje']);
             Bienvenido, <?= htmlspecialchars($_SESSION['administrador']) ?>
           </span>
         <?php else: ?>
-          <form action="./componentes/acceder.php" method="POST" class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2 py-2 px-2" role="login">
-            <input class="form-control form-control" type="text" name="usuario-admin" placeholder="Usuario" aria-label="Usuario" autocomplete="off">
-            <input class="form-control form-control" type="password" name="pass-admin" placeholder="Contraseña" aria-label="Contraseña">
-            <button class="btn btn-warning text-dark w-100 w-lg-auto" type="submit">Iniciar sesión</button>
-          </form>
+          <div class="row px-2 mt-2">
+            <div class="container">
+              <form action="./componentes/acceder.php" method="POST" class="d-flex flex-row gap-2 py-2 px-2 flex-wrap justify-content-center" role="login">
+                <div class="col-auto">
+                  <input class="form-control form-control" type="text" name="usuario-admin" placeholder="Usuario" aria-label="Usuario" autocomplete="off">
+                </div>
+                <div class="col-auto">
+                  <input class="form-control form-control" type="password" name="pass-admin" placeholder="Contraseña" aria-label="Contraseña">
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-warning text-dark w-100 w-lg-auto" type="submit">Iniciar sesión</button>
+                </div>
+              </form>
+            </div>
+          </div>
 
         <?php endif; ?>
       </div>
@@ -74,12 +71,12 @@ unset($_SESSION['mensaje']);
     $seccion = $_GET['seccion'] ?? 'cargar-menu';
     ?>
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-4">
       <div class="row flex-lg-nowrap">
 
         <!-- SIDEBAR -->
         <div class="col-12 col-lg-2 sidebar sticky-top">
-          <a href="./componentes/logout.php" class="btn btn-sm btn-warning text-center text-danger" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
+          <a href="./componentes/logout.php" class="btn btn-sm btn-light text-center text-danger fw-bold" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
           <a class="nav-link-inactive text-white px-4 w-100 text-center">Panel Administrativo</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-menu" class="nav-link">Cargar Menú</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-menu" class="nav-link">Mostrar y Modificar Menúes</a>
@@ -565,25 +562,22 @@ unset($_SESSION['mensaje']);
 
         </div>
       </div>
-    </div>
-
+    </div> 
+       
 
 
   <?php } ?>
-
-  <footer class="footer bg-dark text-white text-center py-3 fixed-bottom">
-    <div class="container">
-      <p class="mb-0">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
-    </div>
-  </footer>
-
 
   <!-- BOTÓN VOLVER ARRIBA -->
   <button id="btn-scroll-top" title="Subir">
     <i class="fas fa-arrow-up"></i>
   </button>
-
-
+  
+  <footer class="footer bg-dark text-white text-center py-3 fixed-bottom">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
+    </div>
+  </footer>
 
   <!-- jQuery JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
