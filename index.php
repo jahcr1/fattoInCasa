@@ -120,20 +120,20 @@ include './componentes/conexion.php';
   <section class="py-5 bg-light" id="section-services">
     <div class="container">
       <!-- Contacto directo -->
-      <div class="row text-center justify-content-center redes-container" data-aos="fade-up">
+      <div class="row text-start justify-content-center redes-container" data-aos="fade-up">
         <div class="row mb-4 ">
           <div class="col">
-            <h1 class="fw-bold">¿Querés contratar nuestros servicios?</h1>
-            <p>Contactanos directamente por nuestras redes:</p>
+            <h1 class="fw-bold">¿Querés contratar nuestros servicios de catering?</h1>
+            <p class="text-muted">Contactanos directamente por nuestras redes y contános que tipo de evento querés contratar..</p>
             <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success"><i class="bi bi-whatsapp"></i> WhatsApp</a>
             <a href="https://www.instagram.com/tuusuario" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
           </div>
         </div>
       </div>
       
-      <div class="row text-start servicios-container">
+      <div class="row text-center servicios-container">
         <div class="col">
-          <h1 class="fw-bold" data-aos="fade-up">Nuestros Servicios</h1>
+          <h2 class="fw-bold" data-aos="fade-up">Nuestros Servicios</h2>
           <p class="text-muted">Ofrecemos los mejores platos gastrónimicos para tus eventos.</p>
         </div>
       </div>
@@ -144,13 +144,13 @@ include './componentes/conexion.php';
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catering" aria-expanded="true" aria-controls="catering">
-              Catering para Eventos Familiares o Eventos sociales
+              Servicio de atering para Eventos Familiares 
             </button>
           </h2>
           <div id="catering" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionServicios">
             <div class="accordion-body bg-img-catering text-white">
-              <p>Nos especializamos en catering casero con presentación profesional para eventos sociales y familiares.</p>
-              <p>Desde viandas individuales hasta grandes celebraciones, adaptamos cada menú.</p>
+              <p>Nos especializamos en brindar un servicio de catering tradicional con presentación profesional, para eventos familiares o reuniones chicas.</p>
+              <p>Desde viandas individuales hasta menúes patrios, nos adaptamos a cada menú importante.</p>
             </div>
           </div>
         </div>
@@ -159,13 +159,13 @@ include './componentes/conexion.php';
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventos2" aria-expanded="false" aria-controls="eventos">
-              Servicio de Catering Personalizado
+              Servicio de Catering para Eventos Sociales
             </button>
           </h2>
           <div id="eventos2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionServicios">
             <div class="accordion-body bg-img-eventos2 text-white">
-              <p>Ajustamos la diferente gama de platos para tus eventos de Mediana escala.</p>
-              <p>Ideal para celebraciones de cumpleaños grandes o eventos sociales.</p>
+              <p>Ajustamos la diferente gama de platos para tus eventos de Mediana a Gran escala.</p>
+              <p>Ideal para celebraciones de cumpleaños grandes o eventos sociales con prioridades distintas.</p>
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@ include './componentes/conexion.php';
           <div id="eventos3" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionServicios">
             <div class="accordion-body bg-img-eventos3 text-white">
               <p class="text-white fw-semibold">También coordinamos eventos completos con ambientación, logística y atención personalizada.</p>
-              <p class="text-white fw-semibold">Ideal para celebraciones íntimas o encuentros empresariales.</p>
+              <p class="text-white text-shadow fw-semibold">Ideal para celebraciones íntimas o encuentros empresariales y con menúes gourmet.</p>
             </div>
           </div>
         </div>
@@ -389,33 +389,33 @@ include './componentes/conexion.php';
     });
   </script>
 
+  <!-- SCRIPT PARA OCULTAR Y REAPARECER EL NAV DINAMICO  -->
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.querySelector(".index-nav");
-    if (!navbar) return;
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbar = document.querySelector(".index-nav");
+      if (!navbar) return;
 
-    let lastScrollTop = 0;
-    const scrollThreshold = 10;
+      let lastScrollTop = 0;
+      const scrollThreshold = 10;
 
-    function handleScroll() {
-      const currentScroll = window.scrollY;
+      function handleScroll() {
+        const currentScroll = window.scrollY;
 
-      if (Math.abs(currentScroll - lastScrollTop) > scrollThreshold) {
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-          // Scrolleando hacia abajo
-          navbar.classList.add("hidden");
-        } else {
-          // Scrolleando hacia arriba
-          navbar.classList.remove("hidden");
+        if (Math.abs(currentScroll - lastScrollTop) > scrollThreshold) {
+          if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // Scrolleando hacia abajo
+            navbar.classList.add("hidden");
+          } else {
+            // Scrolleando hacia arriba
+            navbar.classList.remove("hidden");
+          }
+          lastScrollTop = currentScroll;
         }
-        lastScrollTop = currentScroll;
       }
-    }
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-  });
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    });
   </script>
-
 
 
 </body>
