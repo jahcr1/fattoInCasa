@@ -11,6 +11,9 @@ include './componentes/conexion.php';
   <title>Fatto In Casa | Sitio Oficial </title>
 
   <!-- FAMILIAS TIPOGRAFICAS DE GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Dancing+Script:wght@400..700&family=Kapakana:wght@300..400&family=Love+Light&family=MonteCarlo&family=Mr+De+Haviland&family=Ruthie&family=Tangerine:wght@400;700&family=Updock&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- ICONOS DE BOOTSTRAP -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -76,9 +79,9 @@ include './componentes/conexion.php';
   <section class="py-5 bg-light-gray" id="section-menu">
     <div class="container">
       <div class="row mb-5">
-        <div class="col text-start">
-          <h1 class="fw-bold text-white" data-aos="fade-right">Nuestros Platos</h1>
-          <p class="text-warning">Conocé nuestras especialidades caseras, ideales para cualquier ocasión.</p>
+        <div class="col text-end">
+          <h1 class="titulo-index" data-aos="fade-right">Nuestros Platos</h1>
+          <p class="text-white">Conocé nuestras especialidades caseras, ideales para cualquier ocasión.</p>
         </div>
       </div>
 
@@ -123,18 +126,24 @@ include './componentes/conexion.php';
       <div class="row text-start justify-content-center redes-container" data-aos="fade-up">
         <div class="row mb-4 ">
           <div class="col">
-            <h1 class="fw-bold">¿Querés contratar nuestros servicios de catering?</h1>
-            <p class="text-muted">Contactanos directamente por nuestras redes y contános que tipo de evento querés contratar..</p>
+            <h1 class="titulo-index text-center text-dark titulo-servicio">¿Querés contratar nuestros servicios de Catering?</h1>
+            <p class="text-dark mt-4 parrafo-index">Contactanos directamente por nuestras redes sociales y contános que tipo de evento querés contratar..</p>
             <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-            <a href="https://www.instagram.com/tuusuario" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="https://www.instagram.com/fatto.in.casa_lc" target="_blank" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
+            <p class="text-muted fw-lighter fst-italic mt-3 ">Hacé Click y te lleva directo a un chat de manera automática</p>
+            <p class="text-dark parrafo-index" style="margin-top: 80px;">Si no hacenos una llamada y ponete en contacto con nosotros: </p>
+            <p class="text-muted ps-4"><i class="bi bi-telephone-fill"> </i>(0351) 3111-352</p>
+            <p class="text-muted ps-4"><i class="bi bi-whatsapp"> </i> +54 9 (0351) 3111-352</p>
+            <p class="text-muted ps-4"><i class="bi bi-instagram"></i> www.instagram.com/fatto.in.casa_lc</p>
+            <p class="text-muted ps-4"><i class="bi bi-geo-alt-fill ubic"></i> Córdoba Capital, Argentina</p>
           </div>
         </div>
       </div>
       
       <div class="row text-center servicios-container">
         <div class="col">
-          <h2 class="fw-bold" data-aos="fade-up">Nuestros Servicios</h2>
-          <p class="text-muted">Ofrecemos los mejores platos gastrónimicos para tus eventos.</p>
+          <h1 class="titulo-index text-dark" data-aos="fade-up">Nuestros Servicios</h1>
+          <p class="text-dark parrafo-index">Ofrecemos los mejores platos gastrónimicos para tus eventos.</p>
         </div>
       </div>
 
@@ -143,14 +152,14 @@ include './componentes/conexion.php';
         <!-- Servicio 1 -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catering" aria-expanded="true" aria-controls="catering">
-              Servicio de atering para Eventos Familiares 
+            <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#catering" aria-expanded="true" aria-controls="catering">
+              Servicio de Catering para Eventos Familiares 
             </button>
           </h2>
           <div id="catering" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionServicios">
-            <div class="accordion-body bg-img-catering text-white">
+            <div class="accordion-body bg-img-catering text-white fst-italic">
               <p>Nos especializamos en brindar un servicio de catering tradicional con presentación profesional, para eventos familiares o reuniones chicas.</p>
-              <p>Desde viandas individuales hasta menúes patrios, nos adaptamos a cada menú importante.</p>
+              <p>Desde viandas hasta menúes patrios, nos adaptamos a cada menú importante para tu reunion.</p>
             </div>
           </div>
         </div>
@@ -158,12 +167,12 @@ include './componentes/conexion.php';
         <!-- Servicio 2 -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventos2" aria-expanded="false" aria-controls="eventos">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventos2" aria-expanded="false" aria-controls="eventos">
               Servicio de Catering para Eventos Sociales
             </button>
           </h2>
           <div id="eventos2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionServicios">
-            <div class="accordion-body bg-img-eventos2 text-white">
+            <div class="accordion-body bg-img-eventos2 text-white fst-italic">
               <p>Ajustamos la diferente gama de platos para tus eventos de Mediana a Gran escala.</p>
               <p>Ideal para celebraciones de cumpleaños grandes o eventos sociales con prioridades distintas.</p>
             </div>
@@ -173,14 +182,14 @@ include './componentes/conexion.php';
         <!-- Servicio 3 -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventos3" aria-expanded="false" aria-controls="eventos">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventos3" aria-expanded="false" aria-controls="eventos">
               Servicio de Catering Empresarial
             </button>
           </h2>
           <div id="eventos3" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionServicios">
-            <div class="accordion-body bg-img-eventos3 text-white">
-              <p class="text-white fw-semibold">También coordinamos eventos completos con ambientación, logística y atención personalizada.</p>
-              <p class="text-white text-shadow fw-semibold">Ideal para celebraciones íntimas o encuentros empresariales y con menúes gourmet.</p>
+            <div class="accordion-body bg-img-eventos3 fst-italic">
+              <p class="text-black fw-semibold">También coordinamos eventos completos con ambientación, logística y atención personalizada.</p>
+              <p class="text-black text-shadow fw-semibold">Ideal para celebraciones íntimas o encuentros empresariales y con menúes gourmet.</p>
             </div>
           </div>
         </div>
@@ -196,7 +205,7 @@ include './componentes/conexion.php';
     <div class="container">
       <div class="row text-center mb-4">
         <div class="col">
-          <h1 class="fw-bold">¿Por qué elegirnos?</h1>
+          <h1 class="titulo-index text-dark">¿Por qué elegirnos?</h1>
         </div>
       </div>
       <div class="row g-4">
@@ -204,7 +213,7 @@ include './componentes/conexion.php';
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
           <div class="card border-0 shadow-sm h-100">
             <div class="card-body text-center">
-              <i class="fa-solid fa-utensils fa-2x text-primary mb-3"></i>
+              <i class="fa-solid fa-utensils fa-2x text-warning mb-3"></i>
               <h5 class="card-title">Comida Casera</h5>
               <p class="card-text">Preparaciones auténticas con ingredientes frescos y recetas familiares.</p>
             </div>
@@ -214,7 +223,7 @@ include './componentes/conexion.php';
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
           <div class="card border-0 shadow-sm h-100">
             <div class="card-body text-center">
-              <i class="fa-solid fa-people-group fa-2x text-primary mb-3"></i>
+              <i class="fa-solid fa-people-group fa-2x text-warning mb-3"></i>
               <h5 class="card-title">Eventos Personalizados</h5>
               <p class="card-text">Adaptamos nuestros menús a tu tipo de evento y a tus preferencias.</p>
             </div>
@@ -224,7 +233,7 @@ include './componentes/conexion.php';
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
           <div class="card border-0 shadow-sm h-100">
             <div class="card-body text-center">
-              <i class="fa-solid fa-truck fa-2x text-primary mb-3"></i>
+              <i class="fa-solid fa-truck fa-2x text-warning mb-3"></i>
               <h5 class="card-title">Entrega a Tiempo</h5>
               <p class="card-text">Servicio puntual y confiable. Nos ocupamos de cada detalle logístico.</p>
             </div>
@@ -239,8 +248,8 @@ include './componentes/conexion.php';
     <div class="container">
       <div class="row mb-4 text-center">
         <div class="col">
-          <h3 class="fw-bold">Clientes Satisfechos</h3>
-          <p>Un vistazo a nuestros eventos y comentarios</p>
+          <h2 class="titulo-index">Clientes Satisfechos</h2>
+          <p class="parrafo-index">Un vistazo a nuestros eventos y comentarios</p>
         </div>
       </div>
 

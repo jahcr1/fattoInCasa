@@ -11,6 +11,23 @@ body#index-body {
   padding-top: 70px; /* Ajustar según altura del nav */
 }
 
+/************   FAMILIAS TIPOGRAFICAS   *************/
+/************   FAMILIAS TIPOGRAFICAS   *************/
+/************   FAMILIAS TIPOGRAFICAS   *************/
+
+/*  font-family: "MonteCarlo", cursive; */
+/*  font-family: "Mr De Haviland", cursive; */
+/*  font-family: "Corinthia", cursive; */
+/*  font-family: "Kapakana", cursive; */
+/*  font-family: "Updock", cursive; */
+/*  font-family: "Love Light", cursive; */
+/*  font-family: "WindSong", cursive; */
+/*  font-family: "Ruthie", cursive; */
+/*  font-family: "Tangerine", cursive; */
+/*  font-family: "Dancing Script", cursive; */
+
+
+
 /****************************************************/
 /**********   BOTON PARA VOLVER ARRIBA  *************/
 /****************************************************/
@@ -62,6 +79,23 @@ section#section-services {
 }
 section#section-cards {
   scroll-margin-top: 50px;
+}
+
+.titulo-index {
+  font-family: "Tangerine", cursive;
+  font-weight: bold;
+  font-size: 4.5rem;
+  text-decoration: solid underline #ffc107 2px;
+  text-underline-offset: 5px;
+  padding-left: 10px;
+  color: #ffc107;
+  margin-bottom: 1.5rem;
+}
+
+.parrafo-index {
+  font-family: "Tangerine", cursive;
+  font-size: 1.9rem;
+  font-weight: bold;
 }
 
 /****************************************************/
@@ -414,6 +448,7 @@ textarea {
     transform: translateY(-100%);
   }
 
+  /*  de panel.php  */
   .sidebar {
     display: flex;
     flex-direction: row;
@@ -438,6 +473,11 @@ textarea {
   section#section-cards {
     scroll-margin-top: 100px !important;
   }
+
+  h1.titulo-servicio {
+    font-size: 4rem;
+  }
+
 }
 
 @media (max-width: 991px) {
