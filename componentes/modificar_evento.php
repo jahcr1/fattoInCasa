@@ -8,11 +8,12 @@ if (!isset($_SESSION['administrador'])) {
   exit();
 }
 
-// Si se envía el formulario para modificar un plato
-if (isset($_POST['id_plato'])) {
-  $id_plato = intval($_POST['id_plato']);
+// Si se envía el formulario para modificar un evento
+if (isset($_POST['id_evento'])) {
+  $id_evento = intval($_POST['id_evento']);
   $nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
-  $ingredientes = mysqli_real_escape_string($conexion, $_POST['ingredientes']);
+  $entradas = mysqli_real_escape_string($conexion, $_POST['entradas']);
+  $platos_principales = mysqli_real_escape_string($conexion, $_POST['platos_principales']);
   $descripcion = mysqli_real_escape_string($conexion, $_POST['descripcion'] ?? '');
   $estado = mysqli_real_escape_string($conexion, $_POST['estado']);
 
@@ -21,46 +22,46 @@ if (isset($_POST['id_plato'])) {
     $imagen = file_get_contents($_FILES['nueva_imagen']['tmp_name']);
     $formato = mime_content_type($_FILES['nueva_imagen']['tmp_name']);
 
-    $query = "UPDATE platos SET nombre = ?, ingredientes = ?, descripcion = ?, estado = ?, ci_imagen_plato = ?, formato_imagen = ? WHERE id = ?";
+    $query = "UPDATE eventos SET nombre = ?, entradas = ?, platos_principales = ?, descripcion = ?, estado = ?, ci_imagen_plato = ?, formato_imagen = ? WHERE id = ?";
     $stmt = $conexion->prepare($query);
-    $stmt->bind_param("ssssssi", $nombre, $ingredientes, $descripcion, $estado, $imagen, $formato, $id_plato);
+    $stmt->bind_param("sssssssi", $nombre, $entradas, $platos_principales, $descripcion, $estado, $imagen, $formato, $id_evento);
   } else {
     // No se subió nueva imagen
-    $query = "UPDATE platos SET nombre = ?, ingredientes = ?, descripcion = ?, estado = ? WHERE id = ?";
+    $query = "UPDATE eventos SET nombre = ?, entradas = ?, platos_principales = ?, descripcion = ?, estado = ? WHERE id = ?";
     $stmt = $conexion->prepare($query);
-    $stmt->bind_param("ssssi", $nombre, $ingredientes, $descripcion, $estado, $id_plato);
+    $stmt->bind_param("sssssi", $nombre, $entradas, $platos_principales, $descripcion, $estado, $id_evento);
   }
 
   if ($stmt->execute()) {
-    $_SESSION['mensaje'] = "El plato fue modificado exitosamente.";
+    $_SESSION['mensaje'] = "El evento fue modificado exitosamente.";
   } else {
-    $_SESSION['error'] = "Error al modificar el plato.";
+    $_SESSION['error'] = "Error al modificar el evento.";
   }
 
-  header("Location: ../panel.php?seccion=mostrar-menu");
+  header("Location: ../panel.php?seccion=mostrar-evento");
   exit();
 }
 
-// Si se envía el formulario para filtrar platos por estado
-if (isset($_POST['estado']) && empty($_POST['id_plato'])) {
+// Si se envía el formulario para filtrar eventos por estado
+if (isset($_POST['estado']) && empty($_POST['id_evento'])) {
   $estado = mysqli_real_escape_string($conexion, $_POST['estado']);
 
-  $query = "SELECT * FROM platos WHERE estado = ?";
+  $query = "SELECT * FROM eventos WHERE estado = ?";
   $stmt = $conexion->prepare($query);
   $stmt->bind_param("s", $estado);
   $stmt->execute();
   $resultado = $stmt->get_result();
 
-  $_SESSION['platos'] = ($resultado->num_rows > 0) 
+  $_SESSION['eventos'] = ($resultado->num_rows > 0) 
     ? mysqli_fetch_all($resultado, MYSQLI_ASSOC)
     : [];
 
-  header("Location: ../panel.php?seccion=mostrar-menu");
+  header("Location: ../panel.php?seccion=mostrar-evento");
   exit();
 }
 
 // Si llega aquí sin parámetros válidos
 $_SESSION['error'] = "Solicitud inválida.";
-header("Location: ../panel.php?seccion=mostrar-menu");
+header("Location: ../panel.php?seccion=mostrar-evento");
 exit();
 ?>
