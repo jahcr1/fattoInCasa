@@ -117,7 +117,7 @@ unset($_SESSION['mensaje']);
 
                       <div class="mb-3 col-xl-8 col-lg-8 col-md-8 col-sm-10">
                         <label class="form-label text-white">Descripción</label>
-                        <textarea name="descripcion" class="form-control" placeholder="Locro criollo con ingredientes de lujo, carne de Guanaco, Maiz y mucho más.."></textarea>
+                        <textarea name="descripcion" class="form-control" placeholder="Locro criollo con ingredientes de lujo, carne de Guanaco, Maiz y mucho más.." required></textarea>
                       </div>
 
                       <div class="mb-3 col-xl-6 col-lg-6 col-md-8 col-sm-10">
@@ -127,7 +127,7 @@ unset($_SESSION['mensaje']);
 
                       <div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-8">
                         <label class="form-label text-white">Estado</label>
-                        <select name="estado" class="form-select">
+                        <select name="estado" class="form-select" required>
                           <option value="" disabled selected>Selecciona una opción</option>
                           <option value="Disponible">Disponible</option>
                           <option value="No disponible">No disponible</option>
@@ -301,15 +301,15 @@ unset($_SESSION['mensaje']);
                   <form action="./componentes/cargar_servicio.php" method="POST">
                     <div class="row g-3 justify-content-between">
                       <div class="col-md-3">
-                        <label class="form-label text-white">Nombre del Cliente</label>
+                        <label class="form-label text-white">Nombre del cliente</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                       </div>
                       <div class="col-md-3">
-                        <label class="form-label text-white">Apellido del Cliente</label>
+                        <label class="form-label text-white">Apellido del cliente</label>
                         <input type="text" name="apellido" class="form-control" placeholder="Apellido" required>
                       </div>
                       <div class="col-md-6">
-                        <label class="form-label text-white">Correo del Cliente</label>
+                        <label class="form-label text-white">Correo del cliente</label>
                         <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                       </div>
                       <div class="col-md-4">
@@ -324,7 +324,7 @@ unset($_SESSION['mensaje']);
                         <label class="form-label text-white">Dirección del Evento</label>
                         <input type="text" name="direccion" class="form-control" placeholder="Dirección" required>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <label class="form-label text-white">Fecha del Evento</label>
                         <input type="date" name="fecha" class="form-control" required>
                       </div>
@@ -333,17 +333,29 @@ unset($_SESSION['mensaje']);
                         <input type="time" name="horario" class="form-control" required>
                       </div>
                       <div class="col-md-3">
-                        <label class="form-label text-white">Tipo de Evento</label>
-                        <select name="tipo_servicio" class="form-select" required>
-                          <option value="">Tipo de Servicio</option>
+                        <label class="form-label text-white">Tipo de Catering</label>
+                        <select name="tipo_catering" class="form-select" required>
+                          <option value="" disabled selected>Seleccióne uno</option>
                           <option value="Familiar">Familiar</option>
                           <option value="Social">Social</option>
                           <option value="Empresarial">Empresarial</option>
                         </select>
                       </div>
                       <div class="col-md-6">
-                        <label class="form-label text-white">Detalles del Menú y cantidades</label>
-                        <textarea name="detalle_menues" class="form-control" rows="2" placeholder="Menúes y cantidades" required></textarea>
+                        <label class="form-label text-white">Tipo de Evento elegido</label>
+                        <input type="text" name="tipo_evento" class="form-control" placeholder="Pizzas Parrilleras" title="Elegir un Evento Disponible" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label text-white">Tipo de Servicio</label>
+                        <select name="tipo_servicio" class="form-select" required>
+                          <option value="" disabled selected>Seleccióne uno</option>
+                          <option value="Con Servicio">Con Servicio</option>
+                          <option value="Delivery">Delivery</option>
+                        </select>
+                      </div>
+                      <div class="col-md-8">
+                        <label class="form-label text-white">Detalles del Servicio de Catering y cantidades</label>
+                        <textarea name="detalle_catering" class="form-control" rows="4" placeholder="Detallar la cantidad de personas para el catering, las entradas elegidas x el cliente, el plato principal elegido x el cliente y si es Con Servicio, detallar si es Con Vajillas o Sin Vajillas, etc" required></textarea>
                       </div>
                       <div class="col-12 mt-4">
                         <button type="submit" class="btn btn-warning" style="min-width: 250px;">Registrar Pedido</button>
@@ -359,7 +371,7 @@ unset($_SESSION['mensaje']);
             ?>
               <section id="mostrar-servicio" class="seccion-panel">
 
-                <!-- SUBSECCION: Pedidos Pendientes -->
+                <!-- SUBSECCION: Servicios de Catering Pendientes -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
                   <h5 class="titulo-seccion">Servicios de Catering Pendientes</h5>
                   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -374,14 +386,17 @@ unset($_SESSION['mensaje']);
                           <div class="card h-100 shadow-sm bg-light p-3">
                             <div class="card-body">
                               <h6 class="fw-bold text-dark mb-2">Cliente: <?= htmlspecialchars($pedido['nombre']) ?> <?= htmlspecialchars($pedido['apellido']) ?></h6>
-                              <p class="mb-1"><strong>Email de contacto:</strong> <?= htmlspecialchars($pedido['email']) ?></p>
-                              <p class="mb-1"><strong>Teléfono de contacto:</strong> <?= htmlspecialchars($pedido['telefono']) ?></p>
-                              <p class="mb-1"><strong>Localidad del evento:</strong> <?= htmlspecialchars($pedido['localidad']) ?></p>
-                              <p class="mb-1"><strong>Dirección del evento:</strong> <?= htmlspecialchars($pedido['direccion']) ?></p>
-                              <p class="mb-1"><strong>Tipo de Evento:</strong> <?= htmlspecialchars($pedido['tipo_servicio']) ?></p>
-                              <p class="mb-1"><strong>Fecha del evento:</strong> <?= htmlspecialchars($pedido['fecha']) ?> | <strong>Hora:</strong> <?= htmlspecialchars($pedido['horario']) ?></p>
-                              <p class="mb-2"><strong>Detalles del menú, etc:</strong> <?= htmlspecialchars($pedido['detalle_menues']) ?></p>
-                              <p class="fw-bold text-warning">Estado: <?= htmlspecialchars($pedido['estado']) ?></p>
+                              <p class="mb-1 text-dark"><strong> Email de contacto: </strong> <?= htmlspecialchars($pedido['email']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Teléfono de contacto:</strong> <?= htmlspecialchars($pedido['telefono']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Localidad del evento:</strong> <?= htmlspecialchars($pedido['localidad']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Dirección del evento:</strong> <?= htmlspecialchars($pedido['direccion']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Fecha del evento:</strong> <?= htmlspecialchars($pedido['fecha']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Hora:</strong> <?= htmlspecialchars($pedido['horario']) ?> </p>
+                              <p class="mb-1 text-dark"><strong>Tipo de Catering:</strong> <?= htmlspecialchars($pedido['tipo_catering']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Tipo de Evento seleccionado:</strong> <?= htmlspecialchars($pedido['tipo_evento']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Tipo de Servicio:</strong> <?= htmlspecialchars($pedido['tipo_servicio']) ?></p>
+                              <p class="mb-2 text-dark"><strong>Detalles del Catering:</strong> <?= htmlspecialchars($pedido['detalle_catering']) ?></p>
+                              <p class="fw-semibold text-warning">Estado: <?= htmlspecialchars($pedido['estado']) ?></p>
 
                               <!-- Botón para cambiar estado -->
                               <form method="POST" action="componentes/cambiar_estado_pedido.php" onsubmit="return confirm('¿Seguro que deseas cambiar el estado del pedido?');">
@@ -399,13 +414,13 @@ unset($_SESSION['mensaje']);
                     <?php
                       endwhile;
                     else:
-                      echo "<div class='alert alert-warning text-center'>No hay pedidos pendientes.</div>";
+                      echo "<div class='alert alert-warning text-center'>No hay Servicios de Catering pendientes.</div>";
                     endif;
                     ?>
                   </div>
                 </div>
 
-                <!-- SUBSECCION: Registro de Pedidos por Estado -->
+                <!-- SUBSECCION: Registro de pedidos por Estado -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
                   <h5 class="titulo-seccion">Registro de Servicios de Catering</h5>
                   <div class="mb-4">
@@ -440,21 +455,24 @@ unset($_SESSION['mensaje']);
                         <div class="col">
                           <div class="card h-100 shadow-sm bg-light p-3">
                             <div class="card-body">
-                              <h6 class="fw-bold text-dark mb-2">Cliente: <?= htmlspecialchars($pedido['nombre']) ?> <?= htmlspecialchars($pedido['apellido']) ?></h6>
+                              <h6 class="fw-bold mb-2">Cliente: <?= htmlspecialchars($pedido['nombre']) ?> <?= htmlspecialchars($pedido['apellido']) ?></h6>
                               <p class="mb-1"><strong>Email:</strong> <?= htmlspecialchars($pedido['email']) ?></p>
                               <p class="mb-1"><strong>Teléfono:</strong> <?= htmlspecialchars($pedido['telefono']) ?></p>
                               <p class="mb-1"><strong>Localidad:</strong> <?= htmlspecialchars($pedido['localidad']) ?></p>
                               <p class="mb-1"><strong>Dirección:</strong> <?= htmlspecialchars($pedido['direccion']) ?></p>
-                              <p class="mb-1"><strong>Evento:</strong> <?= htmlspecialchars($pedido['tipo_servicio']) ?></p>
-                              <p class="mb-1"><strong>Fecha:</strong> <?= htmlspecialchars($pedido['fecha']) ?> | <strong>Hora:</strong> <?= htmlspecialchars($pedido['horario']) ?></p>
-                              <p class="mb-2"><strong>Menú:</strong> <?= htmlspecialchars($pedido['detalle_menues']) ?></p>
+                              <p class="mb-1"><strong>Fecha:</strong> <?= htmlspecialchars($pedido['fecha']) ?></p>
+                              <p class="mb-1 text-dark"><strong>Hora:</strong> <?= htmlspecialchars($pedido['horario']) ?> </p>
+                              <p class="mb-1"><strong>Tipo de Catering:</strong> <?= htmlspecialchars($pedido['tipo_catering']) ?></p>
+                              <p class="mb-1"><strong>Tipo de Evento seleccionado:</strong> <?= htmlspecialchars($pedido['tipo_evento']) ?></p>
+                              <p class="mb-1"><strong>Tipo de Servicio:</strong> <?= htmlspecialchars($pedido['tipo_servicio']) ?></p>
+                              <p class="mb-2"><strong>Detalle del Catering:</strong> <?= htmlspecialchars($pedido['detalle_catering']) ?></p>
                               <p class="fw-bold text-warning">Estado: <?= htmlspecialchars($pedido['estado']) ?></p>
                             </div>
                           </div>
                         </div>
                     <?php endforeach; else: ?>
                       <div class="col-12">
-                        <div class="alert alert-info text-center">Seleccione un estado para ver pedidos.</div>
+                        <div class="alert alert-info text-center">Seleccione un estado para ver los pedidos.</div>
                       </div>
                     <?php endif; ?>
                   </div>
@@ -473,11 +491,11 @@ unset($_SESSION['mensaje']);
                     ?>
                         <div class="col">
                           <div class="card h-100 shadow-sm bg-light p-3">
-                            <form method="POST" action="componentes/modificar_pedido.php" class="d-flex flex-column justify-content-between h-100">
+                            <form method="POST" action="componentes/modificar_servicio.php" class="d-flex flex-column justify-content-between h-100">
                               <input type="hidden" name="id_pedido" value="<?= $pedido['id'] ?>">
 
                               <div class="card-body">
-                                <h6 class="fw-bold text-dark mb-2">ID: <?= htmlspecialchars($pedido['id']) ?></h6>
+                                <h6 class="fw-bold text-dark mb-2">ID del servicio de Catering: <?= htmlspecialchars($pedido['id']) ?></h6>
 
                                 <div class="mb-2">
                                   <label class="form-label small">Nombre del cliente</label>
@@ -495,7 +513,7 @@ unset($_SESSION['mensaje']);
                                 </div>
 
                                 <div class="mb-2">
-                                  <label class="form-label small">Teléfono de contacto</label>
+                                  <label class="form-label small">Teléfono del cliente</label>
                                   <input type="text" class="form-control form-control-sm" name="telefono" value="<?= htmlspecialchars($pedido['telefono']) ?>" required>
                                 </div>
 
@@ -520,17 +538,29 @@ unset($_SESSION['mensaje']);
                                 </div>
 
                                 <div class="mb-2">
-                                  <label class="form-label small">Tipo de Servicio de Catering</label>
-                                  <select name="tipo_servicio" class="form-select form-select-sm" required>
-                                    <option value="Familiar" <?= $pedido['tipo_servicio'] === 'Familiar' ? 'selected' : '' ?>>Familiar</option>
-                                    <option value="Social" <?= $pedido['tipo_servicio'] === 'Social' ? 'selected' : '' ?>>Social</option>
-                                    <option value="Empresarial" <?= $pedido['tipo_servicio'] === 'Empresarial' ? 'selected' : '' ?>>Empresarial</option>
+                                  <label class="form-label small">Tipo de Catering</label>
+                                  <select name="tipo_catering" class="form-select form-select-sm" required>
+                                    <option value="Familiar" <?= $pedido['tipo_catering'] === 'Familiar' ? 'selected' : '' ?>>Familiar</option>
+                                    <option value="Social" <?= $pedido['tipo_catering'] === 'Social' ? 'selected' : '' ?>>Social</option>
+                                    <option value="Empresarial" <?= $pedido['tipo_catering'] === 'Empresarial' ? 'selected' : '' ?>>Empresarial</option>
                                   </select>
                                 </div>
 
                                 <div class="mb-2">
-                                  <label class="form-label small">Detalles del Menú, precio, etc</label>
-                                  <textarea name="detalle_menues" class="form-control form-control-sm" rows="2" required><?= htmlspecialchars($pedido['detalle_menues']) ?></textarea>
+                                  <label class="form-label small">Tipo de Evento elegido</label>
+                                  <input type="text" name="tipo_evento" class="form-control form-control-sm" value="<?= htmlspecialchars($pedido['tipo_evento']) ?>" required>
+                                </div>
+                                <div class="mb-2">
+                                  <label class="form-label small">Tipo de Servicio</label>
+                                  <select name="tipo_servicio" class="form-select form-select-sm" required>
+                                    <option value="Con Servicio" <?= $pedido['tipo_servicio'] === 'Con Servicio' ? 'selected' : '' ?>>Con Servicio</option>
+                                    <option value="Delivery" <?= $pedido['tipo_servicio'] === 'Delivery' ? 'selected' : '' ?>>Delivery</option>
+                                  </select>
+                                </div>
+
+                                <div class="mb-2">
+                                  <label class="form-label small">Detalles del catering, Cantidad de personas, etc</label>
+                                  <textarea name="detalle_catering" class="form-control form-control-sm" rows="2" required><?= htmlspecialchars($pedido['detalle_catering']) ?></textarea>
                                 </div>
 
                                 <div class="mb-2">
@@ -552,7 +582,7 @@ unset($_SESSION['mensaje']);
                     <?php
                       endwhile;
                     else:
-                      echo "<div class='alert alert-info text-center'>No hay pedidos para mostrar.</div>";
+                      echo "<div class='alert alert-info text-center'>No hay Servicios de catering o pedidos para mostrar.</div>";
                     endif;
                     ?>
                   </div>
