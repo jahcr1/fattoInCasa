@@ -6,25 +6,25 @@ if (!isset($_SESSION['administrador'])) {
   exit();
 }
 
-$seccion = $_GET['seccion'] ?? 'cargar-menu'; // Por defecto muestra la primera
+$seccion = $_GET['seccion'] ?? 'cargar-evento'; // Por defecto muestra la primera
 ?>
 
     <?php
     switch ($seccion) {
-      case 'cargar-menu':
-        header("Location: ../panel.php?seccion=cargar-menu");
+      case 'cargar-evento':
+        header("Location: ../panel.php?seccion=cargar-evento");
         break;
 
-      case 'mostrar-menu':
-        header("Location: ../panel.php?seccion=mostrar-menu");
+      case 'mostrar-evento':
+        header("Location: ../panel.php?seccion=mostrar-evento");
         break;
 
-      case 'tomar-pedidos':
-        header("Location: ../panel.php?seccion=tomar-pedidos");
+      case 'cargar-servicio':
+        header("Location: ../panel.php?seccion=cargar-servicio");
         break;
 
-      case 'mostrar-pedidos':
-        header("Location: ../panel.php?seccion=mostrar-pedidos");
+      case 'mostrar-servicio':
+        header("Location: ../panel.php?seccion=mostrar-servicio");
         break;
 
       default:
