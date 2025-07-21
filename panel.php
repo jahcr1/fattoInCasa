@@ -297,8 +297,8 @@ unset($_SESSION['mensaje']);
               <section id="cargar-servicio" class="seccion-panel">
                 <!-- FORMULARIO DE PEDIDO -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
-                  <h5 class="titulo-seccion">Registrar Pedido - Servicio</h5>
-                  <form action="./componentes/cargar_pedido.php" method="POST">
+                  <h5 class="titulo-seccion">Registrar un Servicio de Catering</h5>
+                  <form action="./componentes/cargar_servicio.php" method="POST">
                     <div class="row g-3 justify-content-between">
                       <div class="col-md-3">
                         <label class="form-label text-white">Nombre del Cliente</label>
