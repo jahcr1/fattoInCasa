@@ -68,7 +68,7 @@ unset($_SESSION['mensaje']);
 
   <?php if (isset($_SESSION['administrador'])) { ?>
     <?php
-    $seccion = $_GET['seccion'] ?? 'cargar-menu';
+    $seccion = $_GET['seccion'] ?? 'cargar-evento';
     ?>
 
     <div class="container-fluid mb-4">
@@ -78,10 +78,10 @@ unset($_SESSION['mensaje']);
         <div class="col-12 col-lg-2 sidebar sticky-top">
           <a href="./componentes/logout.php" class="btn btn-sm btn-light text-center text-danger fw-bold" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
           <a class="nav-link-inactive text-white px-4 w-100 text-center">Panel Administrativo</a>
-          <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-menu" class="nav-link">Cargar Menú</a>
-          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-menu" class="nav-link">Mostrar y Modificar Menúes</a>
-          <a href="./componentes/mostrar_contenido_panel.php?seccion=tomar-pedidos" class="nav-link">Cargar Servicio de Catering</a>
-          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-pedidos" class="nav-link">Ver y Modificar Servicios de Catering</a>
+          <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-evento" class="nav-link">Agregar un Evento</a>
+          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-evento" class="nav-link">Ver y Modificar Eventos</a>
+          <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-servicio" class="nav-link">Agregar un Servicio de Catering</a>
+          <a href="./componentes/mostrar_contenido_panel.php?seccion=mostrar-servicio" class="nav-link">Ver y Modificar Servicios de Catering</a>
         </div>
 
         <!-- CONTENIDO PRINCIPAL -->
@@ -93,21 +93,26 @@ unset($_SESSION['mensaje']);
 
           <?php
           switch ($seccion) {
-            case 'cargar-menu':
+            case 'cargar-evento':
           ?>
-              <section id="cargar-menu" class="seccion-panel">
+              <section id="cargar-evento" class="seccion-panel">
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
-                  <h5 class="titulo-seccion">Cargar nuevo plato</h5>
-                  <form action="./componentes/cargar_plato.php" method="POST" enctype="multipart/form-data">
+                  <h5 class="titulo-seccion">Cargar un nuevo Evento</h5>
+                  <form action="./componentes/cargar_evento.php" method="POST" enctype="multipart/form-data">
                     <div class="row ps-2">
                       <div class="mb-3 col-xl-5 col-lg-5 col-md-6 col-sm-8">
-                        <label class="form-label text-white">Nombre del Plato</label>
-                        <input type="text" name="nombre" class="form-control" placeholder="Locro" required>
+                        <label class="form-label text-white">Nombre del Evento</label>
+                        <input type="text" name="nombre" class="form-control" placeholder="Evento Criollo" required>
                       </div>
 
                       <div class="mb-3 col-xl-8 col-lg-8 col-md-8 col-sm-10">
-                        <label class="form-label text-white">Ingredientes</label>
-                        <textarea name="ingredientes" class="form-control" placeholder="Zapallo inglés, Carne de Guanaco, Maiz.." required></textarea>
+                        <label class="form-label text-white">Entradas</label>
+                        <textarea name="entradas" class="form-control" placeholder="Empanadas, Pizzetas o Ensalada.." required></textarea>
+                      </div>
+
+                      <div class="mb-3 col-xl-8 col-lg-8 col-md-8 col-sm-10">
+                        <label class="form-label text-white">Platos Principales</label>
+                        <textarea name="platos_principales" class="form-control" placeholder="Locro, Pizzas a la parrilla o Asado.." required></textarea>
                       </div>
 
                       <div class="mb-3 col-xl-8 col-lg-8 col-md-8 col-sm-10">
@@ -116,7 +121,7 @@ unset($_SESSION['mensaje']);
                       </div>
 
                       <div class="mb-3 col-xl-6 col-lg-6 col-md-8 col-sm-10">
-                        <label class="form-label text-white">Imagen del plato</label>
+                        <label class="form-label text-white">Imagen del Menú del Evento</label>
                         <input type="file" name="imagen" class="form-control" accept="image/*" required>
                       </div>
 
@@ -130,7 +135,7 @@ unset($_SESSION['mensaje']);
                       </div>
 
                       <div class="mt-3 mb-3">
-                        <button type="submit" class="btn btn-warning" style="min-width: 250px;">Guardar plato</button>
+                        <button type="submit" class="btn btn-warning" style="min-width: 250px;">Guardar Evento</button>
                       </div>
 
                     </div> 
@@ -141,21 +146,21 @@ unset($_SESSION['mensaje']);
 
             <?php break;
 
-            case 'mostrar-menu':
+            case 'mostrar-evento':
             ?>
-              <section id="mostrar-menu" class="seccion-panel">
-                <!--  MOSTRAR MENUES DISPONIBLES -->
+              <section id="mostrar-evento" class="seccion-panel">
+                <!--  MOSTRAR EVENTOS DISPONIBLES -->
                   <div class="card bg-dark border-0 shadow p-4 mb-4">
-                    <h5 class="titulo-seccion">Menúes Disponibles</h5>
+                    <h5 class="titulo-seccion">Eventos Disponibles</h5>
                     
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                       <?php 
                       include('componentes/conexion.php');
 
-                      $consultar_menu = mysqli_query($conexion, "SELECT * FROM platos WHERE estado = 'Disponible'");
-                      while ($menu_disponible = mysqli_fetch_assoc($consultar_menu)) { 
-                        $img_data = base64_encode($menu_disponible['ci_imagen_plato']);
-                        $img_type = $menu_disponible['formato_imagen'];
+                      $consultar_evento = mysqli_query($conexion, "SELECT * FROM eventos WHERE estado = 'Disponible'");
+                      while ($evento_disponible = mysqli_fetch_assoc($consultar_evento)) { 
+                        $img_data = base64_encode($evento_disponible['ci_imagen_plato']);
+                        $img_type = $evento_disponible['formato_imagen'];
                         $img_src = !empty($img_data) ? "data:$img_type;base64,$img_data" : null;
                       ?>
 
@@ -168,10 +173,11 @@ unset($_SESSION['mensaje']);
                           <?php endif; ?>
 
                           <div class="card-body d-flex flex-column body-menu">
-                            <h5 class="card-title text-center"><?= htmlspecialchars($menu_disponible['nombre']) ?></h5>
-                            <p class="text-muted mb-1"><strong>Ingredientes:</strong> <?= htmlspecialchars($menu_disponible['ingredientes']) ?></p>
-                            <p class="mb-2"><strong>Descripción:</strong> <?= htmlspecialchars($menu_disponible['descripcion']) ?></p>
-                            <p class="mb-2"><strong>Disponibilidad del plato:</strong> <?= htmlspecialchars($menu_disponible['estado']) ?></p>
+                            <h5 class="card-title text-center"><?= htmlspecialchars($evento_disponible['nombre']) ?></h5>
+                            <p class="text-muted mb-1"><strong>Entradas:</strong> <?= htmlspecialchars($evento_disponible['entradas']) ?></p>
+                            <p class="text-muted mb-1"><strong>Platos Principales:</strong> <?= htmlspecialchars($evento_disponible['platos_principales']) ?></p>
+                            <p class="mb-2"><strong>Descripción:</strong> <?= htmlspecialchars($evento_disponible['descripcion']) ?></p>
+                            <p class="mb-2"><strong>Disponibilidad del plato:</strong> <?= htmlspecialchars($evento_disponible['estado']) ?></p>
                             
 
                           </div>
@@ -183,49 +189,49 @@ unset($_SESSION['mensaje']);
 
                   </div>
 
-                <!--  MODIFICAR MENUES -->
+                <!--  MODIFICAR EVENTOS -->
                   <div class="card bg-dark border-0 shadow p-4 mb-4">
-                    <h5 class="titulo-seccion">Modificar un Menú </h5>
+                    <h5 class="titulo-seccion">Modificar un Evento </h5>
 
                     <!-- FORMULARIO DE FILTRO -->
                     <div class="row g-3 mb-4 ps-4">
                       <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xsm-12">
-                          <form action="componentes/modificar_menu.php" method="POST">
-                            <label class="form-label text-white">Elija un plato a modificar según su estado:</label>
+                          <form action="componentes/modificar_evento.php" method="POST">
+                            <label class="form-label text-white">Elija un evento a modificar según su estado:</label>
                             <select class="form-select form-select-sm" name="estado" required>
                               <option value="" disabled selected>Elegir una opción</option>
                               <option value="Disponible">Disponible</option>
                               <option value="No disponible">No disponible</option>
                             </select>
-                            <button type="submit" class="btn btn-warning text-dark mt-2 btn-sm">Buscar Menúes</button>
+                            <button type="submit" class="btn btn-warning text-dark mt-2 btn-sm">Buscar Evento</button>
                           </form>
                       </div>
                     </div>
                     
-                    <!--  MENUES FILTRADOS  -->
+                    <!--  EVENTOS FILTRADOS  -->
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 menu-filtrado">
                       <?php 
                       
-                      $platos = [];
+                      $eventos = [];
 
-                      if (isset($_SESSION['platos'])) {
-                        $platos = $_SESSION['platos'];
-                        unset($_SESSION['platos']); // limpiamos para que no se mantenga
+                      if (isset($_SESSION['eventos'])) {
+                        $eventos = $_SESSION['eventos'];
+                        unset($_SESSION['eventos']); // limpiamos para que no se mantenga
                       }
 
-                      if (empty($platos)): ?>
+                      if (empty($eventos)): ?>
                         <div class="col-12">
-                          <div class="alert alert-warning text-center ms-4">Buscá cualquier plato con el estado seleccionado.</div>
+                          <div class="alert alert-primary text-center ms-4">Buscá un evento con el estado seleccionado.</div>
                         </div>
                       <?php else:
-                        foreach ($platos as $plato): 
-                          $img_data = base64_encode($plato['ci_imagen_plato']);
-                          $img_type = $plato['formato_imagen'];
+                        foreach ($eventos as $evento): 
+                          $img_data = base64_encode($evento['ci_imagen_plato']);
+                          $img_type = $evento['formato_imagen'];
                           $img_src = !empty($img_data) ? "data:$img_type;base64,$img_data" : null;
                       ?>
                         <div class="col">
-                          <form class="card h-100 shadow-sm p-3 d-flex flex-column" method="POST" action="componentes/modificar_menu.php" enctype="multipart/form-data">
-                            <input type="hidden" name="id_plato" value="<?= $plato['id'] ?>">
+                          <form class="card h-100 shadow-sm p-3 d-flex flex-column" method="POST" action="componentes/modificar_evento.php" enctype="multipart/form-data">
+                            <input type="hidden" name="id_evento" value="<?= $evento['id'] ?>">
 
                             <?php if ($img_src): ?>
                               <img src="<?= $img_src ?>" class="card-img-top img-fluid img-menu mb-3" alt="Imagen del plato">
@@ -235,18 +241,23 @@ unset($_SESSION['mensaje']);
 
                             <div class="card-body flex-grow-1">
                               <div class="mb-2">
-                                <label class="form-label">Nombre</label>
-                                <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($plato['nombre']) ?>" required>
+                                <label class="form-label">Nombre del Evento</label>
+                                <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($evento['nombre']) ?>" required>
                               </div>
 
                               <div class="mb-2">
-                                <label class="form-label">Ingredientes</label>
-                                <textarea name="ingredientes" class="form-control" required><?= htmlspecialchars($plato['ingredientes']) ?></textarea>
+                                <label class="form-label">Entradas disponibles</label>
+                                <textarea name="entradas" class="form-control" required><?= htmlspecialchars($evento['entradas']) ?></textarea>
                               </div>
 
                               <div class="mb-2">
-                                <label class="form-label">Descripción</label>
-                                <textarea name="descripcion" class="form-control"><?= htmlspecialchars($plato['descripcion']) ?></textarea>
+                                <label class="form-label">Platos Principales disponibles</label>
+                                <textarea name="platos_principales" class="form-control" required><?= htmlspecialchars($evento['platos_principales']) ?></textarea>
+                              </div>
+
+                              <div class="mb-2">
+                                <label class="form-label">Descripción del evento</label>
+                                <textarea name="descripcion" class="form-control"><?= htmlspecialchars($evento['descripcion']) ?></textarea>
                               </div>
 
                               <div class="mb-3">
@@ -255,20 +266,20 @@ unset($_SESSION['mensaje']);
                               </div>
 
                               <div class="mb-2">
-                                <label class="form-label d-block">Estado</label>
+                                <label class="form-label d-block">Estado o Disponibilidad del Evento</label>
                                 <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="estado" value="Disponible" id="disponible<?= $plato['id'] ?>" <?= $plato['estado'] === 'Disponible' ? 'checked' : '' ?>>
-                                  <label class="form-check-label" for="disponible<?= $plato['id'] ?>">Disponible</label>
+                                  <input class="form-check-input" type="radio" name="estado" value="Disponible" id="disponible<?= $evento['id'] ?>" <?= $evento['estado'] === 'Disponible' ? 'checked' : '' ?>>
+                                  <label class="form-check-label" for="disponible<?= $evento['id'] ?>">Disponible</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="estado" value="No disponible" id="noDisponible<?= $plato['id'] ?>" <?= $plato['estado'] === 'No disponible' ? 'checked' : '' ?>>
-                                  <label class="form-check-label text-danger" for="noDisponible<?= $plato['id'] ?>">No disponible</label>
+                                  <input class="form-check-input" type="radio" name="estado" value="No disponible" id="noDisponible<?= $evento['id'] ?>" <?= $evento['estado'] === 'No disponible' ? 'checked' : '' ?>>
+                                  <label class="form-check-label text-danger" for="noDisponible<?= $evento['id'] ?>">No disponible</label>
                                 </div>
                               </div>
                             </div>
 
                             <div class="mt-auto">
-                              <button type="submit" class="btn btn-warning w-100">Modificar Menú</button>
+                              <button type="submit" class="btn btn-warning w-100">Modificar Evento</button>
                             </div>
                           </form>
                         </div>
@@ -281,9 +292,9 @@ unset($_SESSION['mensaje']);
 
             <?php break;
 
-            case 'tomar-pedidos':
+            case 'cargar-servicio':
             ?>
-              <section id="tomar-pedidos" class="seccion-panel">
+              <section id="cargar-servicio" class="seccion-panel">
                 <!-- FORMULARIO DE PEDIDO -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
                   <h5 class="titulo-seccion">Registrar Pedido - Servicio</h5>
@@ -344,9 +355,9 @@ unset($_SESSION['mensaje']);
 
             <?php break;
 
-            case 'mostrar-pedidos':
+            case 'mostrar-servicio':
             ?>
-              <section id="mostrar-pedidos" class="seccion-panel">
+              <section id="mostrar-servicio" class="seccion-panel">
 
                 <!-- SUBSECCION: Pedidos Pendientes -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
