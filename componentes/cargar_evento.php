@@ -3,7 +3,8 @@ session_start();
 require_once('conexion.php');
 
 $nombre = $_POST['nombre'];
-$ingredientes = $_POST['ingredientes'];
+$entradas = $_POST['entradas'];
+$platos_principales = $_POST['plato_principales'];
 $descripcion = $_POST['descripcion'];
 $estado = $_POST['estado'] ?? 'Disponible';
 
@@ -12,7 +13,7 @@ $imagen = $_FILES['imagen']['tmp_name'];
 $formato = $_FILES['imagen']['type'];
 $img_data = addslashes(file_get_contents($imagen));
 
-$query = "INSERT INTO platos (nombre, ingredientes, descripcion, ci_imagen_plato, formato_imagen, estado)
+$query = "INSERT INTO eventos (nombre, entradas, descripcion, ci_imagen_plato, formato_imagen, estado)
           VALUES ('$nombre', '$ingredientes', '$descripcion', '$img_data', '$formato', '$estado')";
 
 if (mysqli_query($conexion, $query)) {
