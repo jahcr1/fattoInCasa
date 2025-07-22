@@ -374,7 +374,7 @@ unset($_SESSION['mensaje']);
                 <!-- SUBSECCION: Servicios de Catering Pendientes -->
                 <div class="card bg-dark border-0 shadow p-4 mb-4">
                   <h5 class="titulo-seccion">Servicios de Catering Pendientes</h5>
-                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-4">
                     <?php
                     include('componentes/conexion.php');
 
