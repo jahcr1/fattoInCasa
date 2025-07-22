@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './componentes/conexion.php';
+include ('./componentes/conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,12 +46,12 @@ include './componentes/conexion.php';
         <a href="index.php#section-hero" class="custom-link">Inicio</a>
         <a href="index.php#section-menu" class="custom-link">Menúes</a>
         <a href="index.php#section-services" class="custom-link">Nuestros servicios</a>
-        <a href="index.php#section-cards" class="custom-link">Contáctanos</a>
+        <a href="index.php#section-services" class="custom-link">Contáctanos</a>
       </div>
 
       <!-- Bloque del nombre de la marca -->
       <div class="branding-container d-flex align-items-center mt-3 mt-md-0 fade-in-right">
-        <span class="brand-name fw-bold fs-4">Fatto In Casa</span>
+        <span class="brand-name">Fatto in Casa</span>
       </div>
 
     </div>
@@ -62,59 +62,69 @@ include './componentes/conexion.php';
     <div class="container">
       <div class="row align-items-center">
         <!-- Texto -->
-        <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
-          <h2 class="fw-bold">Bienvenido a Fatto In Casa</h2>
-          <p class="text-muted">Ofrecemos un servicio de catering casero, fresco y de calidad, pensado para todo tipo de eventos: sociales, corporativos o familiares.</p>
-          <a href="#section-slider" class="btn btn-warning mt-3">Contactáte con Nosotros</a>
+        <div class="col-md-6 mb-4 mb-md-0 px-4" data-aos="fade-right">
+          <h2 class="fw-normal titulo-logo">Bienvenido a <span style="font-weight: 800; font-size: 3rem; white-space: nowrap;">Fatto in Casa</span></h2>
+          <p class="text-muted parrafo-index px-2">Ofrecemos un servicio de catering casero, fresco y de calidad, pensado para todo tipo de eventos: sociales, corporativos o familiares.</p>
+          <a href="#section-services" class="btn btn-warning mt-3">Contactáte con Nosotros</a>
         </div>
-        <!-- Imagen -->
+        <!-- Imagen o logo -->
         <div class="col-md-6 text-center" data-aos="fade-left">
-          <img src="./imagenes/tarjetas/tarjeta1.jpg" alt="Servicio de catering" class="img-fluid rounded shadow">
+          <img src="./imagenes/logo/logo2.png" alt="Servicio de catering" class="img-fluid">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN MENUES NUESTROS PLATOS -->
+  <!-- SECCIÓN MENUES NUESTROS EVENTOS -->
   <section class="py-5 bg-light-gray" id="section-menu">
     <div class="container">
-      <div class="row mb-5">
+      <div class="row mb-5 px-3">
         <div class="col text-end">
-          <h1 class="titulo-index" data-aos="fade-right">Nuestros Platos</h1>
-          <p class="text-white">Conocé nuestras especialidades caseras, ideales para cualquier ocasión.</p>
+          <h1 class="titulo-index" data-aos="fade-right">Nuestros Eventos</h1>
+          <p class="parrafo-index text-warning">Conocé nuestros distintos tipos de Eventos. Cada uno cuenta con distintas entradas a elección y un plato principal que contempla las mejores especialidades caseras y sabores culinarios, ideales para cualquier ocasión.</p>
         </div>
       </div>
 
-      <!-- Tarjetas dinámicas (ejemplo estático para diseño) -->
-      <!-- Tarjeta 1 -->
-      <div class="row align-items-center mb-5 flex-md-row" data-aos="fade-up">
+        <!-- Tarjetas dinámicas -->
+        
+        <?php 
+        include('componentes/conexion.php');
+
+        $consultar_evento = mysqli_query($conexion, "SELECT * FROM eventos WHERE estado ='Disponible'");
+        $index = 0; // Contador para alternar izquierda/derecha
+
+        while ($evento_disponible = mysqli_fetch_assoc($consultar_evento)) { 
+            $img_data = base64_encode($evento_disponible['ci_imagen_plato']);
+            $img_type = $evento_disponible['formato_imagen'];
+            $img_src = !empty($img_data) ? "data:$img_type;base64,$img_data" : null;
+
+            // Alternar layout: izquierda o derecha
+            $reverseClass = ($index % 2 == 1) ? 'flex-md-row-reverse' : 'flex-md-row';
+      ?>
+      
+      <div class="row align-items-center <?= $reverseClass ?>" data-aos="fade-up">
         <div class="col-md-6 mb-3 mb-md-0">
-          <img src="./imagenes/platos/carne1.jpg" class="img-fluid rounded shadow" alt="Plato 1">
+          <?php if ($img_src): ?>
+            <img src="<?= $img_src ?>" class="img-fluid img-menu-index" alt="Imagen del plato">
+          <?php else: ?>
+            <div class="text-center p-5 text-muted">Sin imagen disponible</div>
+          <?php endif; ?>
         </div>
         <div class="col-md-6">
-          <h4 class="fw-bold text-white">Lasagna Casera</h4>
-          <p class="text-white"><strong>Ingredientes:</strong> Pasta fresca, carne, salsa blanca y roja.</p>
-          <p class="text-white">Una receta tradicional italiana con capas generosas y sabor reconfortante.</p>
-          <a href="#section-contact" class="btn btn-outline-warning mt-2">Hacer Pedido</a>
+          <div class="evento-texto">
+            <h4 class="fw-bold text-white"><?= htmlspecialchars($evento_disponible['nombre']) ?></h4>
+            <p><strong>Entradas:</strong> <?= htmlspecialchars($evento_disponible['entradas']) ?></p>
+            <p><strong>Platos Principales:</strong> <?= htmlspecialchars($evento_disponible['platos_principales']) ?></p>
+            <p><?= htmlspecialchars($evento_disponible['descripcion']) ?></p>
+            <a href="#section-services" class="btn btn-outline-warning mt-2">Contratar Evento</a>
+          </div>
         </div>
       </div>
 
-      <!-- Tarjeta 2 (invertida) -->
-      <div class="row align-items-center mb-5 flex-md-row-reverse" data-aos="fade-up">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <img src="./imagenes/platos/empanada1.jpg" class="img-fluid rounded shadow" alt="Plato 2">
-        </div>
-        <div class="col-md-6">
-          <h4 class="fw-bold text-white">Empanadas Artesanales</h4>
-          <p class="text-white"><strong>Ingredientes:</strong> Carne, cebolla, huevo, especias.</p>
-          <p class="text-white">Hechas a mano con rellenos tradicionales y cocción justa para un bocado perfecto.</p>
-          <a href="#section-contact" class="btn btn-outline-warning mt-2">Hacer Pedido</a>
-        </div>
-      </div>
-
-      <!-- Repetir con loop en backend -->
-
-
+      <?php 
+          $index++; 
+        } 
+      ?>
 
     </div>
   </section>

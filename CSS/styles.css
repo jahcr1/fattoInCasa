@@ -161,6 +161,8 @@ section#section-cards {
 
 /* Espaciado para el texto del nombre */
 .brand-name {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.3rem;
   color: black;
   white-space: nowrap;
 }
@@ -205,12 +207,72 @@ section#section-cards {
 }
 
 /**************************************************/
+/************   SECCION INFO HERO  *******************/
+/**************************************************/
+
+.titulo-logo {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.5rem !important;
+}
+
+
+/**************************************************/
 /************   SECCION MENUES  *******************/
 /**************************************************/
 
 .bg-light-gray {
   background-color: rgb(33, 37, 41);
   opacity: 1;
+}
+
+#section-menu .row {
+  margin-bottom: 3rem; /* Separación entre tarjetas */
+}
+
+.img-menu-index {
+  width: 100%;
+  height: 300px; /* Altura uniforme */
+  object-fit: cover; /* Recorte sin deformar */
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+}
+
+.img-menu-index:hover {
+  transform: scale(1.05);
+}
+
+/* Bloque de texto */
+.evento-texto {
+  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.evento-texto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Títulos y párrafos */
+.evento-texto h4 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.evento-texto p {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+/* Botón */
+.evento-texto .btn {
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
 }
 
 /**************************************************/
@@ -284,6 +346,8 @@ div#accordionServicios {
   position: relative;
 }
 
+
+
 /* Hace que la imagen escale correctamente y se recorte como fondo */
 .slide-img-container {
   position: absolute;
@@ -327,6 +391,10 @@ div#accordionServicios {
   position: relative !important; /* ← evita que se superponga */
   margin-top: 1rem;
   z-index: 2;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffc107;
 }
 
 /* Aseguramos que las imágenes se vean debajo del texto */
@@ -477,6 +545,26 @@ textarea {
   h1.titulo-servicio {
     font-size: 4rem;
   }
+
+  .evento-texto {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .titulo-index {
+  font-weight: bold;
+  font-size: 4.2rem;
+  text-decoration: solid underline #ffc107 2px;
+  padding-left: 10px;
+  color: #ffc107;
+  margin-bottom: 1.5rem;
+}
+
+  .parrafo-index {
+  font-family: "Tangerine", cursive;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
 
 }
 
