@@ -416,6 +416,13 @@ body#body-panel {
   color: white;
 }
 
+.brand-name-panel {
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  color: black;
+  white-space: nowrap;
+}
+
 .sidebar {
   background-color: #1f1f1f;
   height: 100%;
@@ -523,7 +530,7 @@ textarea {
     flex-direction: row;
     flex-wrap: wrap;
     background-color: #1f1f1f;
-    min-width: 100vw;
+    min-width: 90vw;
     min-height: auto !important;
     max-height: 300px;
     padding: 1rem;

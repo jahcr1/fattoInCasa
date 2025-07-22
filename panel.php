@@ -12,6 +12,10 @@ unset($_SESSION['mensaje']);
   <meta charset="UTF-8">
   <title>Panel Administrativo FATTO IN CASA</title>
 
+  <!-- FAMILIAS TIPOGRAFICAS DE GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Dancing+Script:wght@400..700&family=Kapakana:wght@300..400&family=Love+Light&family=MonteCarlo&family=Mr+De+Haviland&family=Ruthie&family=Tangerine:wght@400;700&family=Updock&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- ICONOS DE BOOTSTRAP -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -34,13 +38,13 @@ unset($_SESSION['mensaje']);
 <body id="body-panel">
 
   <!-- NAV PRINCIPAL -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 pt-3">
+  <nav class="navbar navbar-light bg-light px-4">
     <div class="container-fluid justify-content-around">
-      <a class="navbar-brand" href="index.php" target="_blank" onclick="return confirm('¿Estás seguro de que querés ir a la página principal?');">Fatto In Casa</a>
+      <a class="navbar-brand brand-name-panel" href="index.php" target="_blank" onclick="return confirm('¿Estás seguro de que querés ir a la página principal?');">Fatto In Casa</a>
 
       <div class="d-flex ms-auto">
         <?php if (isset($_SESSION['administrador'])): ?>
-          <span class="navbar-text me-4 text-warning">
+          <span class="navbar-text me-4 text-danger fw-bold" style="font-family: 'Tangerine', cursive; font-size:2rem;">
             Bienvenido, <?= htmlspecialchars($_SESSION['administrador']) ?>
           </span>
         <?php else: ?>
@@ -72,10 +76,10 @@ unset($_SESSION['mensaje']);
     ?>
 
     <div class="container-fluid mb-4">
-      <div class="row flex-lg-nowrap">
+      <div class="row flex-lg-nowrap justify-content-center">
 
         <!-- SIDEBAR -->
-        <div class="col-12 col-lg-2 sidebar sticky-top">
+        <div class="col-12 col-lg-3 sidebar sticky-top">
           <a href="./componentes/logout.php" class="btn btn-sm btn-light text-center text-danger fw-bold" onclick="return confirm('¿Estás seguro de que deseas cerrar la sesión?');">Cerrar sesión</a>
           <a class="nav-link-inactive text-white px-4 w-100 text-center">Panel Administrativo</a>
           <a href="./componentes/mostrar_contenido_panel.php?seccion=cargar-evento" class="nav-link">Agregar un Evento</a>
@@ -85,7 +89,7 @@ unset($_SESSION['mensaje']);
         </div>
 
         <!-- CONTENIDO PRINCIPAL -->
-        <div class="col-12 col-lg-10 p-4">
+        <div class="col-12 col-lg-9 p-4">
           <!-- Mostrar mensaje si hay -->
           <?php if (!empty($mensaje)): ?>
             <div class="alert alert-info"><?= $mensaje ?></div>
@@ -153,7 +157,7 @@ unset($_SESSION['mensaje']);
                   <div class="card bg-dark border-0 shadow p-4 mb-4">
                     <h5 class="titulo-seccion">Eventos Disponibles</h5>
                     
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 g-4">
                       <?php 
                       include('componentes/conexion.php');
 
@@ -614,7 +618,7 @@ unset($_SESSION['mensaje']);
     <i class="fas fa-arrow-up"></i>
   </button>
   
-  <footer class="footer bg-dark text-white text-center py-3 fixed-bottom">
+  <footer class="footer bg-light text-dark text-center py-3 fixed-bottom" style="box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);">
     <div class="container">
       <p class="mb-0">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
     </div>
