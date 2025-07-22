@@ -113,9 +113,9 @@ include ('./componentes/conexion.php');
         <div class="col-md-6">
           <div class="evento-texto">
             <h4 class="fw-bold text-white"><?= htmlspecialchars($evento_disponible['nombre']) ?></h4>
-            <p><strong>Entradas:</strong> <?= htmlspecialchars($evento_disponible['entradas']) ?></p>
-            <p><strong>Platos Principales:</strong> <?= htmlspecialchars($evento_disponible['platos_principales']) ?></p>
-            <p><?= htmlspecialchars($evento_disponible['descripcion']) ?></p>
+            <p class="fst-italic"><strong>Entradas:</strong> <?= htmlspecialchars($evento_disponible['entradas']) ?></p>
+            <p class="fst-italic"><strong>Platos Principales:</strong> <?= htmlspecialchars($evento_disponible['platos_principales']) ?></p>
+            <p class="fst-italic text-warning"><?= htmlspecialchars($evento_disponible['descripcion']) ?></p>
             <a href="#section-services" class="btn btn-outline-warning mt-2">Contratar Evento</a>
           </div>
         </div>
@@ -138,14 +138,14 @@ include ('./componentes/conexion.php');
           <div class="col">
             <h1 class="titulo-index text-center text-dark titulo-servicio">¿Querés contratar nuestros servicios de Catering?</h1>
             <p class="text-dark mt-4 parrafo-index">Contactanos directamente por nuestras redes sociales y contános que tipo de evento querés contratar..</p>
-            <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-            <a href="https://www.instagram.com/fatto.in.casa_lc" target="_blank" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success "><i class="bi bi-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/fatto.in.casa_lc" target="_blank" class="btn btn-outline-danger "><i class="bi bi-instagram"></i> Instagram</a>
             <p class="text-muted fw-lighter fst-italic mt-3 ">Hacé Click y te lleva directo a un chat de manera automática</p>
             <p class="text-dark parrafo-index" style="margin-top: 80px;">Si no hacenos una llamada y ponete en contacto con nosotros: </p>
-            <p class="text-muted ps-4"><i class="bi bi-telephone-fill"> </i>(0351) 3111-352</p>
-            <p class="text-muted ps-4"><i class="bi bi-whatsapp"> </i> +54 9 (0351) 3111-352</p>
-            <p class="text-muted ps-4"><i class="bi bi-instagram"></i> www.instagram.com/fatto.in.casa_lc</p>
-            <p class="text-muted ps-4"><i class="bi bi-geo-alt-fill ubic"></i> Córdoba Capital, Argentina</p>
+            <p class="text-muted ps-4"><i class="bi bi-telephone-fill me-3 fs-5 text-black"> </i>(0351) 3111-352</p>
+            <p class="text-muted ps-4"><i class="bi bi-whatsapp me-3 fs-5 text-success"> </i> +54 9 (0351) 3111-352</p>
+            <p class="text-muted ps-4"><i class="bi bi-instagram me-3 fs-5 text-danger"></i> www.instagram.com/fatto.in.casa_lc</p>
+            <p class="text-muted ps-4"><i class="bi bi-geo-alt-fill ubic me-3 fs-5 text-warning"></i> Córdoba Capital, Argentina</p>
           </div>
         </div>
       </div>
@@ -153,7 +153,7 @@ include ('./componentes/conexion.php');
       <div class="row text-center servicios-container">
         <div class="col">
           <h1 class="titulo-index text-dark" data-aos="fade-up">Nuestros Servicios</h1>
-          <p class="text-dark parrafo-index">Ofrecemos los mejores platos gastrónimicos para tus eventos.</p>
+          <p class="text-dark parrafo-index">Ofrecemos los mejores platos gastronómicos para tus eventos.</p>
         </div>
       </div>
 
