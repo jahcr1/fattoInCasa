@@ -45,7 +45,7 @@ unset($_SESSION['mensaje']);
       <div class="d-flex ms-auto">
         <?php if (isset($_SESSION['administrador'])): ?>
           <span class="navbar-text me-4 text-danger fw-bold" style="font-family: 'Tangerine', cursive; font-size:2rem;">
-            Bienvenido, <?= htmlspecialchars($_SESSION['administrador']) ?>
+            Bienvenido <?= htmlspecialchars($_SESSION['administrador']) ?>
           </span>
         <?php else: ?>
           <div class="row px-2 mt-2">
@@ -194,7 +194,7 @@ unset($_SESSION['mensaje']);
                   </div>
 
                 <!--  MODIFICAR EVENTOS -->
-                  <div class="card bg-dark border-0 shadow p-4 mb-4">
+                  <div class="card bg-dark border-0 shadow p-4 mb-4" id="modificar-evento">
                     <h5 class="titulo-seccion">Modificar un Evento </h5>
 
                     <!-- FORMULARIO DE FILTRO -->
@@ -444,7 +444,7 @@ unset($_SESSION['mensaje']);
                   </div>
 
                   <!-- MOSTRAR PEDIDOS FILTRADOS -->
-                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="servicios-filtrados">
                     <?php
                     $pedidos_filtrados = [];
 
@@ -620,7 +620,7 @@ unset($_SESSION['mensaje']);
   
   <footer class="footer bg-light text-dark text-center py-3 fixed-bottom" style="box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
+      <p class="mb-0 parrafo-footer">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
     </div>
   </footer>
 

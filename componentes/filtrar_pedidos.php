@@ -12,7 +12,7 @@ if (isset($_SESSION['administrador'])) {
     $resultado = $stmt->get_result();
 
     $_SESSION['pedidos_filtrados'] = $resultado->fetch_all(MYSQLI_ASSOC);
-    header("Location: ../panel.php?seccion=mostrar-servicio");
+    header("Location: ../panel.php?seccion=mostrar-servicio#servicios-filtrados");
     exit();
   } else {
     $_SESSION['error'] = "Debe seleccionar un estado.";

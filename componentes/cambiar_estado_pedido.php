@@ -13,9 +13,9 @@ if (isset($_SESSION['administrador'])) {
     $stmt->execute();
 
     $_SESSION['mensaje'] = "Estado actualizado correctamente.";
-    header("Location: ../panel.php?seccion=mostrar-pedidos");
+    header("Location: ../panel.php?seccion=mostrar-servicio");
     exit();
   }
-}
+} 
 header("Location: ../panel.php?error=accion-invalida");
 exit();

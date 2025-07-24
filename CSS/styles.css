@@ -411,6 +411,10 @@ div#accordionServicios {
 /**************************************************/
 /**************************************************/
 
+div#servicios-filtrados {
+  scroll-margin-top: 150px;
+}
+
 body#body-panel {
   background-color: rgb(91, 98, 105);
   color: white;
@@ -560,19 +564,24 @@ textarea {
   }
 
   .titulo-index {
-  font-weight: bold;
-  font-size: 4.2rem;
-  text-decoration: solid underline #ffc107 2px;
-  padding-left: 10px;
-  color: #ffc107;
-  margin-bottom: 1.5rem;
-}
+    font-weight: bold;
+    font-size: 4.2rem;
+    text-decoration: solid underline #ffc107 2px;
+    padding-left: 10px;
+    color: #ffc107;
+    margin-bottom: 1.5rem;
+  }
 
   .parrafo-index {
-  font-family: "Tangerine", cursive;
-  font-size: 1.7rem;
-  font-weight: bold;
-}
+    font-family: "Tangerine", cursive;
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
+
+  p.parrafo-footer {
+    font-size: 0.8rem;
+    font-style: italic;
+  }
 
 }
 
