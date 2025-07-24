@@ -8,7 +8,7 @@ include ('./componentes/conexion.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fatto In Casa | Sitio Oficial </title>
+  <title>Fatto In Casa Caterings</title>
 
   <!-- FAMILIAS TIPOGRAFICAS DE GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -293,10 +293,10 @@ include ('./componentes/conexion.php');
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
                 <figure class="text-center">
                   <blockquote class="blockquote">
-                    <p>A well-known quote, contained in a blockquote element.</p>
+                    <p>De los mejores servicios que contraté, muy profesionales y muy rica comida.</p>
                   </blockquote>
                   <figcaption class="blockquote-footer">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
+                    La Chula <cite title="Famosa perra">Amiga del reconocido Rayo</cite>
                   </figcaption>
                 </figure>
               </div>
@@ -313,10 +313,10 @@ include ('./componentes/conexion.php');
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
                 <figure class="text-center">
                   <blockquote class="blockquote">
-                    <p>A well-known quote, contained in a blockquote element.</p>
+                    <p>Eventos riquisimos y buen servicio en general.</p>
                   </blockquote>
                   <figcaption class="blockquote-footer">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
+                    María Luz Roldan <cite title="Escritora de renombre">- Famosa escritora argentina</cite>
                   </figcaption>
                 </figure>
               </div>
@@ -353,7 +353,7 @@ include ('./componentes/conexion.php');
   <!-- FOOTER -->
   <footer class="bg-light text-dark text-center py-4">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
+      <p class="mb-0 parrafo-footer">&copy; 2025 Fatto In Casa & jahcr1 - Todos los derechos reservados</p>
     </div>
   </footer>
 
