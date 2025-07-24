@@ -56,7 +56,7 @@ if (isset($_POST['estado']) && empty($_POST['id_evento'])) {
     ? mysqli_fetch_all($resultado, MYSQLI_ASSOC)
     : [];
 
-  header("Location: ../panel.php?seccion=mostrar-evento");
+  header("Location: ../panel.php?seccion=mostrar-evento#modificar-evento");
   exit();
 }
 
