@@ -307,7 +307,7 @@ include ('./componentes/conexion.php');
             <div class="card text-white border-0 position-relative overflow-hidden">
               <!-- Contenedor de imagen con clases personalizadas -->
               <div class="slide-img-container">
-                <img src="./imagenes/sliders/evento2.jpg" class="img-slide" alt="Evento 3">
+                <img src="./imagenes/sliders/evento3.jpeg" class="img-slide" alt="Evento 3">
               </div>
               <!-- Overlay con fondo oscuro -->
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
@@ -326,7 +326,7 @@ include ('./componentes/conexion.php');
           <div class="swiper-slide">
             <div class="card text-white border-0 position-relative overflow-hidden">
               <div class="slide-img-container">
-                <img src="./imagenes/sliders/evento1.jpg" class="img-slide" alt="Evento 2">
+                <img src="./imagenes/sliders/evento5.jpeg" class="img-slide" alt="Evento 2">
               </div>
               <div class="card-img-overlay d-flex align-items-end p-4 bg-gradient-dark">
                 <figure class="text-end">

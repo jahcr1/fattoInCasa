@@ -334,7 +334,7 @@ div#accordionServicios {
 /* Asegura que el contenedor tenga altura */
 .swiper {
   width: 100%;
-  height: 300px; /* o el alto que desees */
+  height: 100%; /* o el alto que desees */
   position: relative;
 }
 
@@ -343,7 +343,8 @@ div#accordionServicios {
 }
 
 .swiper-slide {
-  height: 300px; /* o más, ajustalo a gusto */
+  width: 800px;
+  height: 600px; /* o más, ajustalo a gusto */
   position: relative;
 }
 
@@ -489,6 +490,46 @@ textarea {
 
 /* Responsive: en mobile los links van en columna */
 
+
+
+@media (max-width: 991px) {
+  .sidebar {
+    min-height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: space-evenly;
+  }
+
+  .sidebar a {
+    flex: 1 1 100%;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  section#section-hero {
+    scroll-margin-top: 150px;
+  }
+  section#section-menu {
+    scroll-margin-top: 5px;
+  }
+  section#section-services {
+    scroll-margin-top: 1px;
+  }
+  section#section-cards {
+    scroll-margin-top: 50px;
+  }
+
+  nav.index-nav {
+    transition: transform 0.3s ease-in-out;
+  }
+  nav.index-nav.hidden {
+    transform: translateY(-100%);
+  }
+
+
+}
+
 @media (max-width: 768px) {
 
   body#index-body {
@@ -583,40 +624,45 @@ textarea {
     font-style: italic;
   }
 
+  /* Asegura que el contenedor tenga altura */
+.swiper {
+  width: 100%;
+  height: 300px; /* o el alto que desees */
+  position: relative;
 }
 
-@media (max-width: 991px) {
-  .sidebar {
-    min-height: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1rem;
-    justify-content: space-evenly;
-  }
+.swiper-wrapper {
+  height: 100%;
+}
 
-  .sidebar a {
-    flex: 1 1 100%;
-    text-align: center;
-    padding: 0.5rem;
-  }
+.swiper-slide {
+  height: 300px; /* o más, ajustalo a gusto */
+  position: relative;
+}
 
-  section#section-hero {
-    scroll-margin-top: 150px;
-  }
-  section#section-menu {
-    scroll-margin-top: 5px;
-  }
-  section#section-services {
-    scroll-margin-top: 1px;
-  }
-  section#section-cards {
-    scroll-margin-top: 50px;
-  }
 
-  nav.index-nav {
-    transition: transform 0.3s ease-in-out;
-  }
-  nav.index-nav.hidden {
-    transform: translateY(-100%);
-  }
+
+/* Hace que la imagen escale correctamente y se recorte como fondo */
+.slide-img-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.img-slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ← escalar sin deformar */
+  transition: transform 0.5s ease;
+}
+
+/* Efecto sutil de zoom al pasar el mouse */
+.card:hover .img-slide {
+  transform: scale(1.05);
+}
+
 }
