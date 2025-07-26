@@ -1,0 +1,46 @@
+# Activar reescritura
+RewriteEngine On
+RewriteBase /
+
+##############################################
+# 🔒 1. Bloquear archivos ocultos y sensibles
+##############################################
+
+# Archivos como .env, .gitignore, .htaccess
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Archivos de configuración que no deben ser accedidos nunca
+<FilesMatch "^(composer\.json|composer\.lock|config\.php)$">
+  Require all denied
+</FilesMatch>
+
+##############################################
+# 🔒 2. Bloquear carpetas internas
+##############################################
+
+RewriteRule ^vendor(/.*)?$ - [F,L]
+
+##############################################
+# 🌐 5. Redirección de HTTP a HTTPS
+##############################################
+
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+##############################################
+# 🚀 6. URL amigables (.php oculto)
+##############################################
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+##############################################
+# 🔁 7. Rutas personalizadas
+##############################################
+
+DirectoryIndex index.php
+
+RewriteRule ^admin$ panel.php [L]
+
