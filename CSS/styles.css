@@ -26,6 +26,15 @@ body#index-body {
 /*  font-family: "Tangerine", cursive; */
 /*  font-family: "Dancing Script", cursive; */
 
+/*  NO CURSIVAS  */
+/*  font-family: "Sour Gummy", sans-serif; 7 */
+/*  font-family: "Federo", sans-serif; 7.5 */
+/*  font-family: "Pompiere", sans-serif; 8 */
+/*  font-family: "Viaoda Libre", serif; 5 */
+/*  font-family: "Akaya Kanadaka", system-ui; 8 */
+/*  font-family: "Yusei Magic", sans-serif; 6 */
+/*  font-family: "Macondo", cursive; 7.5 */
+
 
 
 /****************************************************/
@@ -93,9 +102,9 @@ section#section-cards {
 }
 
 .parrafo-index {
-  font-family: "Tangerine", cursive;
-  font-size: 2rem;
-  font-weight: bold;
+  font-family: "Akaya Kanadaka", system-ui;
+  font-size: 1.35rem;
+  font-weight: normal;
 }
 
 /****************************************************/
@@ -280,6 +289,28 @@ section#section-cards {
 /*********   SECCION NUESTROS SERVICIOS  **********/
 /**************************************************/
 
+div.redes-container {
+  margin-top: 20px;
+}
+
+div.servicios-container {
+  margin-top: 80px;
+}
+
+div#accordionServicios {
+  margin: 20px 0 50px 0;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #ffc107;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
 
 /* Imagen de fondo en accordion */
 .bg-img-catering {
@@ -303,20 +334,6 @@ section#section-cards {
   padding: 1.5rem;
   border-radius: 0rem;
   backdrop-filter: brightness(0.6);
-}
-
-div.redes-container {
-  margin-top: 120px;
-  
-    
-}
-
-div.servicios-container {
-  margin-top: 80px;
-}
-
-div#accordionServicios {
-  margin: 20px 0 50px 0;
 }
 
 /**************************************************/
@@ -614,9 +631,9 @@ textarea {
   }
 
   .parrafo-index {
-    font-family: "Tangerine", cursive;
-    font-size: 1.7rem;
-    font-weight: bold;
+    font-family: "Akaya Kanadaka", system-ui;
+    font-size: 1.2rem;
+    font-weight: normal;
   }
 
   p.parrafo-footer {

@@ -13,7 +13,7 @@ include ('./componentes/conexion.php');
   <!-- FAMILIAS TIPOGRAFICAS DE GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Dancing+Script:wght@400..700&family=Kapakana:wght@300..400&family=Love+Light&family=MonteCarlo&family=Mr+De+Haviland&family=Ruthie&family=Tangerine:wght@400;700&family=Updock&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Corinthia:wght@400;700&family=Dancing+Script:wght@400..700&family=Federo&family=Kapakana:wght@300..400&family=Love+Light&family=Macondo&family=MonteCarlo&family=Mr+De+Haviland&family=Pompiere&family=Ruthie&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&family=Updock&family=Viaoda+Libre&family=WindSong:wght@400;500&family=Yusei+Magic&display=swap" rel="stylesheet">
 
   <!-- ICONOS DE BOOTSTRAP -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -132,22 +132,42 @@ include ('./componentes/conexion.php');
   <!-- SECCIÓN NUESTROS SERVICIOS -->
   <section class="py-5 bg-light" id="section-services">
     <div class="container">
+      <div class="col">
+        <h1 class="titulo-index text-center text-dark titulo-servicio">
+              ¿Querés contratar nuestros servicios de Catering?
+        </h1>
+      </div>
       <!-- Contacto directo -->
-      <div class="row text-start justify-content-center redes-container" data-aos="fade-up">
-        <div class="row mb-4 ">
-          <div class="col">
-            <h1 class="titulo-index text-center text-dark titulo-servicio">¿Querés contratar nuestros servicios de Catering?</h1>
-            <p class="text-dark mt-4 parrafo-index">Contactanos directamente por nuestras redes sociales y contános que tipo de evento querés contratar..</p>
-            <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success "><i class="bi bi-whatsapp"></i> WhatsApp</a>
-            <a href="https://www.instagram.com/fatto.in.casa_lc" target="_blank" class="btn btn-outline-danger "><i class="bi bi-instagram"></i> Instagram</a>
-            <p class="text-muted fw-lighter fst-italic mt-3 ">Hacé Click y te lleva directo a un chat de manera automática</p>
-            <p class="text-dark parrafo-index" style="margin-top: 80px;">Si no hacenos una llamada y ponete en contacto con nosotros: </p>
-            <p class="text-muted ps-4"><i class="bi bi-telephone-fill me-3 fs-5 text-black"> </i>(0351) 3111-352</p>
-            <p class="text-muted ps-4"><i class="bi bi-whatsapp me-3 fs-5 text-success"> </i> +54 9 (0351) 3111-352</p>
-            <p class="text-muted ps-4"><i class="bi bi-instagram me-3 fs-5 text-danger"></i> www.instagram.com/fatto.in.casa_lc</p>
-            <p class="text-muted ps-4"><i class="bi bi-geo-alt-fill ubic me-3 fs-5 text-warning"></i> Córdoba Capital, Argentina</p>
-          </div>
+      <div class="row justify-content-center align-items-center redes-container" data-aos="fade-up">
+        
+        <!-- Texto -->
+        <div class="col-lg-7 col-12 mb-4 mb-lg-0">
+          <p class="text-dark mt-4 parrafo-index">
+            Contactanos directamente por nuestras redes sociales y contános qué tipo de evento querés contratar...
+          </p>
+          <a href="https://wa.me/<?php echo $_ENV['WSP_CEL']; ?>/" target="_blank" class="btn btn-outline-success">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.instagram.com/fatto.in.casa_lc" target="_blank" class="btn btn-outline-danger">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+          <p class="text-muted fw-lighter fst-italic mt-3">
+            Hacé Click y te lleva directo a un chat de manera automática
+          </p>
+          <p class="text-dark parrafo-index mt-5">
+            Si no, hacenos una llamada y ponete en contacto con nosotros:
+          </p>
+          <p class="text-muted ps-4"><i class="bi bi-telephone-fill me-3 fs-5 text-black"></i> (0351) 3111-352</p>
+          <p class="text-muted ps-4"><i class="bi bi-whatsapp me-3 fs-5 text-success"></i> +54 9 (0351) 3111-352</p>
+          <p class="text-muted ps-4"><i class="bi bi-instagram me-3 fs-5 text-danger"></i> www.instagram.com/fatto.in.casa_lc</p>
+          <p class="text-muted ps-4"><i class="bi bi-geo-alt-fill me-3 fs-5 text-warning"></i> Córdoba Capital, Argentina</p>
         </div>
+
+        <!-- Imagen -->
+        <div class="col-lg-5 col-12 text-center">
+          <img src="./imagenes/servicios/qr2.png" alt="Catering" class="img-fluid rounded">
+        </div>
+
       </div>
       
       <div class="row text-center servicios-container">
