@@ -10,6 +10,24 @@ unset($_SESSION['mensaje']);
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--  Favicon -->
+  <link rel="icon" href="imagenes/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="imagenes/favicon/favicon.ico" type="image/x-icon">
+
+  <!-- PNG fallbacks -->
+  <link rel="icon" type="image/png" sizes="96x96" href="imagenes/favicon/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="imagenes/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Fatto in Casa" />
+  
+  <!-- SVG fallbacks -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/favicon/favicon.svg" />
+  
+  <!-- Modern manifest -->
+  <link rel="manifest" href="imagenes/favicon/site.webmanifest" />
+  <meta name="theme-color" content="#ffffff">
+  
   <title>Panel Administrativo FATTO IN CASA</title>
 
   <!-- FAMILIAS TIPOGRAFICAS DE GOOGLE FONTS -->
